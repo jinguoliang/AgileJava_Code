@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="aeb2ebdb-ec2b-4428-90e9-ba9f6fa041ff" name="Default Changelist" comment="" />
+    <list default="true" id="aeb2ebdb-ec2b-4428-90e9-ba9f6fa041ff" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/jinux/agilejava/studensystem/CourseSession.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/jinux/agilejava/studensystem/CourseSession.java" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -13,50 +16,46 @@
     <session id="-1825049792">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
+          <entry key="project.closed" value="1" />
+          <entry key="project.open.time.11" value="1" />
           <entry key="project.open.time.2" value="1" />
-          <entry key="project.opened" value="1" />
+          <entry key="project.opened" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="class" value="2" />
           <entry key="iml" value="1" />
-          <entry key="java" value="5" />
+          <entry key="java" value="9" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CLASS" value="2" />
           <entry key="IDEA_MODULE" value="1" />
-          <entry key="JAVA" value="5" />
+          <entry key="JAVA" value="9" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="1702" />
+          <entry key="java" value="2577" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="1702" />
+          <entry key="JAVA" value="2577" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.vcs.git.usages" />
     </session>
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/jinux/agilejava/studensystem/Student.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="242">
+            <state relative-caret-position="176">
               <caret line="11" column="20" selection-start-line="11" selection-start-column="20" selection-end-line="11" selection-end-column="20" />
-              <folding>
-                <element signature="e#99#100#0" expanded="true" />
-                <element signature="e#131#132#0" expanded="true" />
-                <element signature="e#137#138#0" expanded="true" />
-                <element signature="e#164#165#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -64,7 +63,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/jinux/agilejava/studensystem/StudentTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="176">
+            <state relative-caret-position="132">
               <caret line="8" column="23" selection-start-line="8" selection-start-column="23" selection-end-line="8" selection-end-column="23" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -73,38 +72,93 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/jinux/agilejava/studensystem/CourseSession.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="334">
-              <caret line="44" column="4" selection-start-line="44" selection-start-column="4" selection-end-line="44" selection-end-column="4" />
+            <state relative-caret-position="243">
+              <caret line="40" column="57" lean-forward="true" selection-start-line="40" selection-start-column="57" selection-end-line="40" selection-end-column="57" />
               <folding>
-                <element signature="e#171#172#0" expanded="true" />
-                <element signature="e#204#205#0" expanded="true" />
-                <element signature="e#302#303#0" expanded="true" />
-                <element signature="e#331#332#0" expanded="true" />
-                <element signature="e#423#424#0" expanded="true" />
                 <element signature="e#447#448#0" expanded="true" />
-                <element signature="e#617#618#0" expanded="true" />
-                <element signature="e#658#659#0" expanded="true" />
-                <element signature="e#774#775#0" expanded="true" />
-                <element signature="e#801#802#0" expanded="true" />
+                <element signature="e#481#482#0" expanded="true" />
                 <element signature="e#1077#1078#0" expanded="true" />
-                <element signature="e#1104#1105#0" expanded="true" />
+                <element signature="e#1110#1111#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/jinux/agilejava/studensystem/CourseSessionTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="63">
-              <caret line="16" column="42" selection-start-line="16" selection-start-column="42" selection-end-line="16" selection-end-column="42" />
+            <state relative-caret-position="202">
+              <caret line="26" column="58" lean-forward="true" selection-start-line="26" selection-start-column="58" selection-end-line="26" selection-end-column="58" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#858#859#0" expanded="true" />
-                <element signature="e#907#908#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/jinux/agilejava/chess/pieces/Pawn.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="308">
+              <caret line="14" column="34" selection-start-line="14" selection-start-column="34" selection-end-line="14" selection-end-column="34" />
+              <folding>
+                <element signature="e#86#87#0" expanded="true" />
+                <element signature="e#120#121#0" expanded="true" />
+                <element signature="e#272#273#0" expanded="true" />
+                <element signature="e#312#313#0" expanded="true" />
+                <element signature="e#85#86#0" expanded="true" />
+                <element signature="e#112#113#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/jinux/agilejava/chess/Board.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="419">
+              <caret line="30" column="27" selection-start-line="30" selection-start-column="27" selection-end-line="30" selection-end-column="27" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#202#203#0" expanded="true" />
+                <element signature="e#229#230#0" expanded="true" />
+                <element signature="e#267#268#0" expanded="true" />
+                <element signature="e#299#300#0" expanded="true" />
+                <element signature="e#335#336#0" expanded="true" />
+                <element signature="e#364#365#0" expanded="true" />
+                <element signature="e#474#475#0" expanded="true" />
+                <element signature="e#498#499#0" expanded="true" />
+                <element signature="e#540#541#0" expanded="true" />
+                <element signature="e#567#568#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/jinux/agilejava/chess/BoardTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="375">
+              <caret line="33" column="47" selection-start-line="33" selection-start-column="8" selection-end-line="33" selection-end-column="47" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#348#349#0" expanded="true" />
+                <element signature="e#399#400#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/jinux/agilejava/chess/pieces/PawnTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="374">
+              <caret line="17" column="31" lean-forward="true" selection-start-line="17" selection-start-column="31" selection-end-line="17" selection-end-column="31" />
+              <folding>
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -129,10 +183,13 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JUnit5 Test Class" />
         <option value="Class" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -140,8 +197,12 @@
         <option value="$PROJECT_DIR$/src/com/jinux/agilejava/studensystem/Student.java" />
         <option value="$PROJECT_DIR$/src/com/jinux/agilejava/studensystem/StudentTest.java" />
         <option value="$PROJECT_DIR$/src/com/jinux/agilejava/studensystem/AllTests.java" />
-        <option value="$PROJECT_DIR$/src/com/jinux/agilejava/studensystem/CourseSession.java" />
         <option value="$PROJECT_DIR$/src/com/jinux/agilejava/studensystem/CourseSessionTest.java" />
+        <option value="$PROJECT_DIR$/src/com/jinux/agilejava/chess/PawnTest.java" />
+        <option value="$PROJECT_DIR$/src/com/jinux/agilejava/chess/Pawn.java" />
+        <option value="$PROJECT_DIR$/src/com/jinux/agilejava/chess/Board.java" />
+        <option value="$PROJECT_DIR$/src/com/jinux/agilejava/chess/BoardTest.java" />
+        <option value="$PROJECT_DIR$/src/com/jinux/agilejava/studensystem/CourseSession.java" />
       </list>
     </option>
   </component>
@@ -151,12 +212,12 @@
     <option name="width" value="1400" />
     <option name="height" value="1000" />
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -167,68 +228,19 @@
             <path>
               <item name="AgileJava" type="b2602c69:ProjectViewProjectNode" />
               <item name="AgileJava" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="AgileJava" type="b2602c69:ProjectViewProjectNode" />
-              <item name="AgileJava" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-              <item name="production" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="AgileJava" type="b2602c69:ProjectViewProjectNode" />
-              <item name="AgileJava" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-              <item name="production" type="462c0819:PsiDirectoryNode" />
-              <item name="AgileJava" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="AgileJava" type="b2602c69:ProjectViewProjectNode" />
-              <item name="AgileJava" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-              <item name="production" type="462c0819:PsiDirectoryNode" />
-              <item name="AgileJava" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="AgileJava" type="b2602c69:ProjectViewProjectNode" />
-              <item name="AgileJava" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-              <item name="production" type="462c0819:PsiDirectoryNode" />
-              <item name="AgileJava" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="jinux" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="AgileJava" type="b2602c69:ProjectViewProjectNode" />
-              <item name="AgileJava" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-              <item name="production" type="462c0819:PsiDirectoryNode" />
-              <item name="AgileJava" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="jinux" type="462c0819:PsiDirectoryNode" />
-              <item name="agilejava" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="AgileJava" type="b2602c69:ProjectViewProjectNode" />
-              <item name="AgileJava" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-              <item name="production" type="462c0819:PsiDirectoryNode" />
-              <item name="AgileJava" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="jinux" type="462c0819:PsiDirectoryNode" />
-              <item name="agilejava" type="462c0819:PsiDirectoryNode" />
-              <item name="studensystem" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="AgileJava" type="b2602c69:ProjectViewProjectNode" />
-              <item name="AgileJava" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="AgileJava" type="b2602c69:ProjectViewProjectNode" />
               <item name="AgileJava" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="agilejava" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="AgileJava" type="b2602c69:ProjectViewProjectNode" />
+              <item name="AgileJava" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="agilejava" type="462c0819:PsiDirectoryNode" />
               <item name="studensystem" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -236,6 +248,7 @@
         </subPane>
       </pane>
       <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -252,7 +265,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.jinux.agilejava.chess" />
       <recent name="com.jinux.agilejava.studensystem" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.jinux.agilejava.chess.pieces" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
@@ -270,7 +287,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.com.jinux.agilejava.studensystem in AgileJava">
+  <component name="RunManager" selected="JUnit.com.jinux.agilejava.chess in AgileJava">
     <configuration default="true" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="com.jinux.agilejava.studensystem.Student" />
       <method v="2">
@@ -291,6 +308,20 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="PawnTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="AgileJava" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.jinux.agilejava.chess.pieces.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.jinux.agilejava.chess.pieces" />
+      <option name="MAIN_CLASS_NAME" value="com.jinux.agilejava.chess.pieces.PawnTest" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="StudentTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="AgileJava" />
       <extension name="coverage">
@@ -301,6 +332,20 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.jinux.agilejava.studensystem" />
       <option name="MAIN_CLASS_NAME" value="com.jinux.agilejava.studensystem.StudentTest" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="com.jinux.agilejava.chess in AgileJava" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="AgileJava" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.jinux.agilejava.chess.pieces.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.jinux.agilejava.chess" />
+      <option name="TEST_OBJECT" value="package" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -323,9 +368,13 @@
       <item itemvalue="JUnit.StudentTest" />
       <item itemvalue="JUnit.CourseSessionTest" />
       <item itemvalue="JUnit.com.jinux.agilejava.studensystem in AgileJava" />
+      <item itemvalue="JUnit.PawnTest" />
+      <item itemvalue="JUnit.com.jinux.agilejava.chess in AgileJava" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.com.jinux.agilejava.chess in AgileJava" />
+        <item itemvalue="JUnit.PawnTest" />
         <item itemvalue="JUnit.com.jinux.agilejava.studensystem in AgileJava" />
         <item itemvalue="JUnit.CourseSessionTest" />
         <item itemvalue="JUnit.StudentTest" />
@@ -343,62 +392,62 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="com_jinux_agilejava_studensystem_in_AgileJava - 2018.11.11 at 02h 31m 04s.xml">
-      <configuration name="com.jinux.agilejava.studensystem in AgileJava" configurationId="JUnit" />
+    <history-entry file="PawnTest - 2018.11.11 at 11h 12m 24s.xml">
+      <configuration name="PawnTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="com_jinux_agilejava_studensystem_in_AgileJava - 2018.11.11 at 02h 34m 39s.xml">
-      <configuration name="com.jinux.agilejava.studensystem in AgileJava" configurationId="JUnit" />
+    <history-entry file="PawnTest - 2018.11.11 at 11h 14m 07s.xml">
+      <configuration name="PawnTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="com_jinux_agilejava_studensystem_in_AgileJava - 2018.11.11 at 02h 35m 19s.xml">
-      <configuration name="com.jinux.agilejava.studensystem in AgileJava" configurationId="JUnit" />
+    <history-entry file="PawnTest - 2018.11.11 at 11h 14m 33s.xml">
+      <configuration name="PawnTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="com_jinux_agilejava_studensystem_in_AgileJava - 2018.11.11 at 02h 35m 42s.xml">
-      <configuration name="com.jinux.agilejava.studensystem in AgileJava" configurationId="JUnit" />
+    <history-entry file="PawnTest - 2018.11.11 at 11h 16m 10s.xml">
+      <configuration name="PawnTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="com_jinux_agilejava_studensystem_in_AgileJava - 2018.11.11 at 02h 37m 32s.xml">
-      <configuration name="com.jinux.agilejava.studensystem in AgileJava" configurationId="JUnit" />
+    <history-entry file="PawnTest - 2018.11.11 at 11h 18m 20s.xml">
+      <configuration name="PawnTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="com_jinux_agilejava_studensystem_in_AgileJava - 2018.11.11 at 02h 44m 21s.xml">
-      <configuration name="com.jinux.agilejava.studensystem in AgileJava" configurationId="JUnit" />
+    <history-entry file="com_jinux_agilejava_chess_in_AgileJava - 2018.11.11 at 11h 20m 19s.xml">
+      <configuration name="com.jinux.agilejava.chess in AgileJava" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="com_jinux_agilejava_studensystem_in_AgileJava - 2018.11.11 at 02h 44m 38s.xml">
-      <configuration name="com.jinux.agilejava.studensystem in AgileJava" configurationId="JUnit" />
+    <history-entry file="com_jinux_agilejava_chess_in_AgileJava - 2018.11.11 at 11h 25m 01s.xml">
+      <configuration name="com.jinux.agilejava.chess in AgileJava" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="com_jinux_agilejava_studensystem_in_AgileJava - 2018.11.11 at 02h 47m 23s.xml">
-      <configuration name="com.jinux.agilejava.studensystem in AgileJava" configurationId="JUnit" />
+    <history-entry file="com_jinux_agilejava_chess_in_AgileJava - 2018.11.11 at 11h 26m 21s.xml">
+      <configuration name="com.jinux.agilejava.chess in AgileJava" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="com_jinux_agilejava_studensystem_in_AgileJava - 2018.11.11 at 03h 05m 53s.xml">
-      <configuration name="com.jinux.agilejava.studensystem in AgileJava" configurationId="JUnit" />
+    <history-entry file="com_jinux_agilejava_chess_in_AgileJava - 2018.11.11 at 11h 36m 41s.xml">
+      <configuration name="com.jinux.agilejava.chess in AgileJava" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="com_jinux_agilejava_studensystem_in_AgileJava - 2018.11.11 at 03h 11m 35s.xml">
-      <configuration name="com.jinux.agilejava.studensystem in AgileJava" configurationId="JUnit" />
+    <history-entry file="com_jinux_agilejava_chess_in_AgileJava - 2018.11.11 at 11h 40m 15s.xml">
+      <configuration name="com.jinux.agilejava.chess in AgileJava" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="27" width="1853" height="1053" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Designer" />
-      <window_info id="UI Designer" />
-      <window_info id="Favorites" side_tool="true" />
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Version Control" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Terminal" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" weight="0.32968238" />
+      <window_info id="Designer" order="2" />
+      <window_info id="UI Designer" order="3" />
+      <window_info id="Favorites" order="4" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32968238" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32968238" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32929516" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="right" id="Palette" />
-      <window_info anchor="right" id="Palette&#9;" />
+      <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.32929516" />
+      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.32929516" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Palette&#9;" order="4" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -409,42 +458,24 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="308">
           <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
-          <folding>
-            <element signature="e#0#248#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/AgileJava.iml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/jinux/agilejava/studensystem/AllTests.java" />
     <entry file="file://$PROJECT_DIR$/src/com/jinux/agilejava/studensystem/Student.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
+        <state relative-caret-position="176">
           <caret line="11" column="20" selection-start-line="11" selection-start-column="20" selection-end-line="11" selection-end-column="20" />
-          <folding>
-            <element signature="e#99#100#0" expanded="true" />
-            <element signature="e#131#132#0" expanded="true" />
-            <element signature="e#137#138#0" expanded="true" />
-            <element signature="e#164#165#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/jinux/agilejava/studensystem/StudentTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
+        <state relative-caret-position="132">
           <caret line="8" column="23" selection-start-line="8" selection-start-column="23" selection-end-line="8" selection-end-column="23" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/jinux/agilejava/studensystem/AllTests.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="4" column="5" lean-forward="true" selection-start-line="4" selection-start-column="5" selection-end-line="4" selection-end-column="5" />
         </state>
       </provider>
     </entry>
@@ -455,35 +486,85 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/jinux/agilejava/studensystem/CourseSession.java">
+    <entry file="file://$PROJECT_DIR$/AgileJava.iml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/jinux/agilejava/studensystem/CourseSessionTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="334">
-          <caret line="44" column="4" selection-start-line="44" selection-start-column="4" selection-end-line="44" selection-end-column="4" />
+        <state relative-caret-position="202">
+          <caret line="26" column="58" lean-forward="true" selection-start-line="26" selection-start-column="58" selection-end-line="26" selection-end-column="58" />
           <folding>
-            <element signature="e#171#172#0" expanded="true" />
-            <element signature="e#204#205#0" expanded="true" />
-            <element signature="e#302#303#0" expanded="true" />
-            <element signature="e#331#332#0" expanded="true" />
-            <element signature="e#423#424#0" expanded="true" />
-            <element signature="e#447#448#0" expanded="true" />
-            <element signature="e#617#618#0" expanded="true" />
-            <element signature="e#658#659#0" expanded="true" />
-            <element signature="e#774#775#0" expanded="true" />
-            <element signature="e#801#802#0" expanded="true" />
-            <element signature="e#1077#1078#0" expanded="true" />
-            <element signature="e#1104#1105#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/jinux/agilejava/studensystem/CourseSessionTest.java">
+    <entry file="file://$PROJECT_DIR$/src/com/jinux/agilejava/chess/pieces/PawnTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="63">
-          <caret line="16" column="42" selection-start-line="16" selection-start-column="42" selection-end-line="16" selection-end-column="42" />
+        <state relative-caret-position="374">
+          <caret line="17" column="31" lean-forward="true" selection-start-line="17" selection-start-column="31" selection-end-line="17" selection-end-column="31" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#858#859#0" expanded="true" />
-            <element signature="e#907#908#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/jinux/agilejava/chess/pieces/Pawn.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="14" column="34" selection-start-line="14" selection-start-column="34" selection-end-line="14" selection-end-column="34" />
+          <folding>
+            <element signature="e#86#87#0" expanded="true" />
+            <element signature="e#120#121#0" expanded="true" />
+            <element signature="e#272#273#0" expanded="true" />
+            <element signature="e#312#313#0" expanded="true" />
+            <element signature="e#85#86#0" expanded="true" />
+            <element signature="e#112#113#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/jinux/agilejava/chess/Board.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="419">
+          <caret line="30" column="27" selection-start-line="30" selection-start-column="27" selection-end-line="30" selection-end-column="27" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#202#203#0" expanded="true" />
+            <element signature="e#229#230#0" expanded="true" />
+            <element signature="e#267#268#0" expanded="true" />
+            <element signature="e#299#300#0" expanded="true" />
+            <element signature="e#335#336#0" expanded="true" />
+            <element signature="e#364#365#0" expanded="true" />
+            <element signature="e#474#475#0" expanded="true" />
+            <element signature="e#498#499#0" expanded="true" />
+            <element signature="e#540#541#0" expanded="true" />
+            <element signature="e#567#568#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/jinux/agilejava/chess/BoardTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="33" column="47" selection-start-line="33" selection-start-column="8" selection-end-line="33" selection-end-column="47" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#348#349#0" expanded="true" />
+            <element signature="e#399#400#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/jinux/agilejava/studensystem/CourseSession.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="243">
+          <caret line="40" column="57" lean-forward="true" selection-start-line="40" selection-start-column="57" selection-end-line="40" selection-end-column="57" />
+          <folding>
+            <element signature="e#447#448#0" expanded="true" />
+            <element signature="e#481#482#0" expanded="true" />
+            <element signature="e#1077#1078#0" expanded="true" />
+            <element signature="e#1110#1111#0" expanded="true" />
           </folding>
         </state>
       </provider>

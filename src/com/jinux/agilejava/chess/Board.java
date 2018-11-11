@@ -29,8 +29,8 @@ public class Board {
     }
 
 
-    public int getPawnCount() {
-        return 16;
+    public int getPieceCount() {
+        return 32;
     }
 
 

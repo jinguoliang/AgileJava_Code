@@ -18,7 +18,7 @@ class BoardTest {
 
     @Test
     void testCreate() {
-        assertEquals(16, mBoard.getPawnCount());
+        assertEquals(32, mBoard.getPieceCount());
 
         mBoard.initialize();
         assertEquals("pppp" + "pppp", mBoard.getRowToPrint(2));

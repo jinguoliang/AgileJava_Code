@@ -25,6 +25,7 @@ class BoardTest {
         assertEquals("PPPP" + "PPPP", mBoard.getRowToPrint(7));
 
         String blankRank = StringUtil.appendNewLine("...." + "....");
+        System.out.printf(mBoard.getPrintFormat());
         assertEquals(""
                 + StringUtil.appendNewLine("RNBQ" + "KBNR")
                 + StringUtil.appendNewLine("PPPP" + "PPPP")

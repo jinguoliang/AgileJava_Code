@@ -1,6 +1,6 @@
 package com.jinux.agilejava.chess;
 
-import com.jinux.agilejava.chess.pieces.Pawn;
+import com.jinux.agilejava.chess.pieces.Piece;
 import com.jinux.agilejava.utils.StringUtil;
 
 import java.util.ArrayList;
@@ -10,22 +10,40 @@ import java.util.List;
  * a chess board we can play on it
  */
 public class Board {
-    private List<List<Pawn>> mPawns = new ArrayList<>();
+    private List<List<Piece>> mPieces = new ArrayList<>();
 
 
     public void initialize() {
         for (int i = 0; i < 8; i++) {
-            mPawns.add(new ArrayList<>());
+            mPieces.add(createSpaceRow());
         }
 
-        List<Pawn> mRow2 = mPawns.get(1);
-        List<Pawn> mRow7 = mPawns.get(7 - 1);
 
+        List<Piece> mRow1 = mPieces.get(0);
+        mRow1.clear();
+        "rnbqkbnr".chars().forEach(i -> mRow1.add(new Piece(Piece.COLOR_WHITE, (char) i)));
+
+        List<Piece> mRow8 = mPieces.get(7);
+        mRow8.clear();
+        "RNBQKBNR".chars().forEach(i -> mRow8.add(new Piece(Piece.COLOR_WHITE, (char) i)));
+
+        List<Piece> mRow2 = mPieces.get(1);
+        mRow2.clear();
+        List<Piece> mRow7 = mPieces.get(7 - 1);
+        mRow7.clear();
         for (int i = 0; i < 8; i++) {
-            mRow2.add(new Pawn(Pawn.COLOR_WHITE, 'p'));
-            mRow7.add(new Pawn(Pawn.COLOR_BLACK, 'P'));
+            mRow2.add(new Piece(Piece.COLOR_WHITE, 'p'));
+            mRow7.add(new Piece(Piece.COLOR_BLACK, 'P'));
         }
 
+    }
+
+    private List<Piece> createSpaceRow() {
+        List<Piece> row = new ArrayList<>();
+        for (int i = 0; i < 8; i++) {
+            row.add(new Piece(Piece.COLOR_WHITE, '.'));
+        }
+        return row;
     }
 
 
@@ -35,17 +53,10 @@ public class Board {
 
 
     public String getRowToPrint(int i) {
-        List<Pawn> list = mPawns.get(i - 1);
+        List<Piece> list = mPieces.get(i - 1);
 
         StringBuilder builder = new StringBuilder();
-
-        if (list.isEmpty()) {
-            builder.append("...." + "....");
-        } else {
-            for (Pawn pawn : list) {
-                builder.append(pawn.getPrintChar());
-            }
-        }
+        list.forEach(piece -> builder.append(piece.getPrintChar()));
         return builder.toString();
     }
 

@@ -24,15 +24,14 @@ class BoardTest {
         assertEquals("pppp" + "pppp", mBoard.getRowToPrint(2));
         assertEquals("PPPP" + "PPPP", mBoard.getRowToPrint(7));
 
-        String blankRank = StringUtil.appendNewLine("...." + "....");
         assertEquals(""
-                + StringUtil.appendNewLine("RNBQ" + "KBNR")
+                + StringUtil.appendNewLine("...." + "....")
                 + StringUtil.appendNewLine("PPPP" + "PPPP")
-                + blankRank
-                + blankRank
-                + blankRank
-                + blankRank
+                + StringUtil.appendNewLine("...." + "....")
+                + StringUtil.appendNewLine("...." + "....")
+                + StringUtil.appendNewLine("...." + "....")
+                + StringUtil.appendNewLine("...." + "....")
                 + StringUtil.appendNewLine("pppp" + "pppp")
-                + StringUtil.appendNewLine("rnbq" + "kbnr"), mBoard.getPrintFormat());
+                + StringUtil.appendNewLine("...." + "...."), mBoard.getPrintFormat());
     }
 }

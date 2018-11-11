@@ -19,10 +19,10 @@ class RosterReporterTest {
         String rosterReport = new RosterReporter(session).getReport();
         System.out.printf(rosterReport);
         assertEquals(RosterReporter.ROSTER_REPORT_HEADER
-                        + StringUtil.line("A")
-                        + StringUtil.line("B")
+                        + StringUtil.appendNewLine("A")
+                        + StringUtil.appendNewLine("B")
                         + RosterReporter.ROSTER_REPORT_FOOTER
-                        + StringUtil.line("2"),
+                        + StringUtil.appendNewLine("2"),
                 rosterReport);
     }
 

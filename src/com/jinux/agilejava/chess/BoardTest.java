@@ -25,13 +25,13 @@ class BoardTest {
         assertEquals("PPPP" + "PPPP", mBoard.getRowToPrint(7));
 
         assertEquals(""
-                + StringUtil.line("...." + "....")
-                + StringUtil.line("PPPP" + "PPPP")
-                + StringUtil.line("...." + "....")
-                + StringUtil.line("...." + "....")
-                + StringUtil.line("...." + "....")
-                + StringUtil.line("...." + "....")
-                + StringUtil.line("pppp" + "pppp")
-                + StringUtil.line("...." + "...."), mBoard.getPrintFormat());
+                + StringUtil.appendNewLine("...." + "....")
+                + StringUtil.appendNewLine("PPPP" + "PPPP")
+                + StringUtil.appendNewLine("...." + "....")
+                + StringUtil.appendNewLine("...." + "....")
+                + StringUtil.appendNewLine("...." + "....")
+                + StringUtil.appendNewLine("...." + "....")
+                + StringUtil.appendNewLine("pppp" + "pppp")
+                + StringUtil.appendNewLine("...." + "...."), mBoard.getPrintFormat());
     }
 }

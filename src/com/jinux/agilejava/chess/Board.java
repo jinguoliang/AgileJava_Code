@@ -52,7 +52,7 @@ public class Board {
     public String getPrintFormat() {
         StringBuilder builder = new StringBuilder();
         for (int i = 8; i >= 1; i--) {
-            builder.append(StringUtil.line(getRowToPrint(i)));
+            builder.append(StringUtil.appendNewLine(getRowToPrint(i)));
         }
         return builder.toString();
     }

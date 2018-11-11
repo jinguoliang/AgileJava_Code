@@ -7,8 +7,8 @@ import static com.jinux.agilejava.utils.StringUtil.NEWLINE;
 
 public class RosterReporter {
     public static final String ROSTER_REPORT_HEADER =
-            StringUtil.line("Stutents")
-            + StringUtil.line("----" );
+            StringUtil.appendNewLine("Stutents")
+            + StringUtil.appendNewLine("----" );
     public static final String ROSTER_REPORT_FOOTER = NEWLINE + "# students = ";
 
     private final CourseSession mCourseSession;

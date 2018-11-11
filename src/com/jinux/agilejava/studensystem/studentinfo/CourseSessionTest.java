@@ -1,11 +1,9 @@
-package com.jinux.agilejava.studensystem;
+package com.jinux.agilejava.studensystem.studentinfo;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.Calendar;
 import java.util.Date;
-import java.util.GregorianCalendar;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -13,10 +11,12 @@ class CourseSessionTest {
 
     private CourseSession mSession;
     private Date mStartDate;
+    private DateUtil mDateUtil;
 
     @BeforeEach
     public void setUp() {
-        mStartDate = createDate(2003, 1, 6);
+        mDateUtil = new DateUtil();
+        mStartDate = mDateUtil.createDate(2003, 1, 6);
         mSession = new CourseSession("ENGL", 101, mStartDate);
     }
     @Test
@@ -25,15 +25,6 @@ class CourseSessionTest {
         assertEquals(101, mSession.getNumber());
         assertEquals(0, mSession.getNumberOfStudents());
         assertEquals(mStartDate, mSession.getStartDate());
-    }
-
-    private Date createDate(int year, int month, int date) {
-        Calendar calendar = new GregorianCalendar();
-        calendar.clear();
-        calendar.set(Calendar.YEAR, year);
-        calendar.set(Calendar.MONDAY, month - 1);
-        calendar.set(Calendar.DAY_OF_MONTH, date);
-        return calendar.getTime();
     }
 
     @Test
@@ -52,7 +43,9 @@ class CourseSessionTest {
     @Test
     void testCourseDate() {
         CourseSession session = new CourseSession("ABCD", 200, mStartDate);
-        Date sixteenWeeksOut = createDate(2003, 4, 25);
+        Date sixteenWeeksOut = mDateUtil.createDate(2003, 4, 25);
         assertEquals(sixteenWeeksOut, session.getEndDate());
     }
+
+
 }

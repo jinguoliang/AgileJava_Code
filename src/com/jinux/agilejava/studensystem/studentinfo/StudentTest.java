@@ -1,4 +1,4 @@
-package com.jinux.agilejava.studensystem;
+package com.jinux.agilejava.studensystem.studentinfo;
 
 import org.junit.jupiter.api.Test;
 

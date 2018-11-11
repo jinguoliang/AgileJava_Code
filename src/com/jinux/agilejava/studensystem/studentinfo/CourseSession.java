@@ -1,4 +1,4 @@
-package com.jinux.agilejava.studensystem;
+package com.jinux.agilejava.studensystem.studentinfo;
 
 import java.util.*;
 
@@ -41,8 +41,6 @@ public class CourseSession {
         calendar.add(Calendar.DAY_OF_YEAR, numberOfDays);
         return calendar.getTime();
     }
-
-
 
     public Date getStartDate() {
         return mStartDate;

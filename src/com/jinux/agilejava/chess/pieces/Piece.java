@@ -20,4 +20,12 @@ public class Piece {
     public char getPrintChar() {
         return mPrintChar;
     }
+
+    public boolean isWhite() {
+        return COLOR_WHITE.equals(mColor);
+    }
+
+    public boolean isBlack() {
+        return COLOR_BLACK.equals(mColor);
+    }
 }

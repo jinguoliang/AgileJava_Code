@@ -17,6 +17,12 @@ class PawnTest {
 
         Pawn pawn3 = new Pawn();
         assertEquals(COLOR_WHITE, pawn3.getColor());
+
+        Pawn pawn4 = new Pawn(COLOR_WHITE, 'p');
+        assertEquals('p', pawn4.getPrintChar());
+
+        Pawn pawn5 = new Pawn(COLOR_BLACK, 'P');
+        assertEquals('P', pawn5.getPrintChar());
     }
 
 }

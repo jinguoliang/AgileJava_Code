@@ -9,25 +9,52 @@ import java.util.List;
  * a chess board we can play on it
  */
 public class Board {
-    private List<Pawn> mPawns = new ArrayList<>();
+    public static final String NEWLINE = "\n";
+    private List<List<Pawn>> mPawns = new ArrayList<>();
 
-    public boolean isEmpty() {
-        return true;
+
+    public void initialize() {
+        for (int i = 0; i < 8; i++) {
+            mPawns.add(new ArrayList<>());
+        }
+
+        List<Pawn> mRow2 = mPawns.get(1);
+        List<Pawn> mRow7 = mPawns.get(7 - 1);
+
+        for (int i = 0; i < 8; i++) {
+            mRow2.add(new Pawn(Pawn.COLOR_WHITE, 'p'));
+            mRow7.add(new Pawn(Pawn.COLOR_BLACK, 'P'));
+        }
+
     }
 
-    public void addPawn(Pawn pawn) {
-        mPawns.add(pawn);
-    }
-
-    public List<Pawn> getPawns() {
-        return mPawns;
-    }
 
     public int getPawnCount() {
-        return mPawns.size();
+        return 16;
     }
 
-    public Pawn get(int i) {
-        return mPawns.get(i);
+
+    public String getRowToPrint(int i) {
+        List<Pawn> list = mPawns.get(i - 1);
+
+        StringBuilder builder = new StringBuilder();
+
+        if (list.isEmpty()) {
+            builder.append("...." + "....");
+        } else {
+            for (Pawn pawn : list) {
+                builder.append(pawn.getPrintChar());
+            }
+        }
+        return builder.toString();
+    }
+
+    public String getPrintFormat() {
+        StringBuilder builder = new StringBuilder();
+        for (int i = 8; i >= 1; i--) {
+            builder.append(getRowToPrint(i));
+            builder.append(NEWLINE);
+        }
+        return builder.toString();
     }
 }

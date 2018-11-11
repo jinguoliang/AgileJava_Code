@@ -6,6 +6,7 @@ public class Pawn {
     public final static String COLOR_BLACK = "black";
 
     private final String mColor;
+    private Character mPrintChar;
 
     public Pawn(String color) {
         this.mColor = color;
@@ -15,7 +16,16 @@ public class Pawn {
         this.mColor = COLOR_WHITE;
     }
 
+    public Pawn(String colorWhite, Character p) {
+        this.mColor = colorWhite;
+        this.mPrintChar = p;
+    }
+
     public String getColor() {
         return mColor;
+    }
+
+    public char getPrintChar() {
+        return mPrintChar;
     }
 }

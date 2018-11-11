@@ -8,10 +8,14 @@ public class CourseSession {
     private int mNumber;
     private List<Student> mAllStudents = new ArrayList<>();
 
-    public CourseSession(String department, int number, Date startDate) {
+    private CourseSession(String department, int number, Date startDate) {
         mDepartment = department;
         mNumber = number;
         mStartDate = startDate;
+    }
+
+    public static CourseSession create(String department, int number, Date startDate) {
+        return new CourseSession(department, number, startDate);
     }
 
     public String getDepartment() {

@@ -1,7 +1,7 @@
 package com.jinux.agilejava.studensystem.report;
 
 import com.jinux.agilejava.studensystem.studentinfo.CourseSession;
-import com.jinux.agilejava.studensystem.studentinfo.DateUtil;
+import com.jinux.agilejava.studensystem.utils.DateUtil;
 import com.jinux.agilejava.studensystem.studentinfo.Student;
 import org.junit.jupiter.api.Test;
 
@@ -11,8 +11,7 @@ class RosterReporterTest {
 
     @Test
     void testRosterReport() {
-        DateUtil dateUtil = new DateUtil();
-        CourseSession session = new CourseSession("ENGL", 101, dateUtil.createDate(2003, 1, 6));
+        CourseSession session = CourseSession.create("ENGL", 101, DateUtil.createDate(2003, 1, 6));
         session.enroll(new Student("A"));
         session.enroll(new Student("B"));
 

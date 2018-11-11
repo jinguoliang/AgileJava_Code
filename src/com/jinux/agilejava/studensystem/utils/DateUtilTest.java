@@ -1,4 +1,4 @@
-package com.jinux.agilejava.studensystem.studentinfo;
+package com.jinux.agilejava.studensystem.utils;
 
 import org.junit.jupiter.api.Test;
 
@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class DateUtilTest {
     @Test
     void testCreateDate() {
-        Date date = new DateUtil().createDate(2000, 1, 1);
+        Date date = DateUtil.createDate(2000, 1, 1);
 
         Calendar calendar = new GregorianCalendar();
         calendar.setTime(date);

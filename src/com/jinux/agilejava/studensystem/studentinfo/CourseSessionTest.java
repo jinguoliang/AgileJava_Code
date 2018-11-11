@@ -1,5 +1,6 @@
 package com.jinux.agilejava.studensystem.studentinfo;
 
+import com.jinux.agilejava.studensystem.utils.DateUtil;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -11,13 +12,11 @@ class CourseSessionTest {
 
     private CourseSession mSession;
     private Date mStartDate;
-    private DateUtil mDateUtil;
 
     @BeforeEach
     public void setUp() {
-        mDateUtil = new DateUtil();
-        mStartDate = mDateUtil.createDate(2003, 1, 6);
-        mSession = new CourseSession("ENGL", 101, mStartDate);
+        mStartDate = DateUtil.createDate(2003, 1, 6);
+        mSession = CourseSession.create("ENGL", 101, mStartDate);
     }
     @Test
     void testCreate() {
@@ -42,8 +41,8 @@ class CourseSessionTest {
 
     @Test
     void testCourseDate() {
-        CourseSession session = new CourseSession("ABCD", 200, mStartDate);
-        Date sixteenWeeksOut = mDateUtil.createDate(2003, 4, 25);
+        CourseSession session = CourseSession.create("ABCD", 200, mStartDate);
+        Date sixteenWeeksOut = DateUtil.createDate(2003, 4, 25);
         assertEquals(sixteenWeeksOut, session.getEndDate());
     }
 

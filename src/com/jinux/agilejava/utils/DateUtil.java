@@ -1,4 +1,4 @@
-package com.jinux.agilejava.studensystem.utils;
+package com.jinux.agilejava.utils;
 
 import java.util.Calendar;
 import java.util.Date;

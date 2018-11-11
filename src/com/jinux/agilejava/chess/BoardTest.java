@@ -1,5 +1,6 @@
 package com.jinux.agilejava.chess;
 
+import com.jinux.agilejava.utils.StringUtil;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -24,13 +25,13 @@ class BoardTest {
         assertEquals("PPPP" + "PPPP", mBoard.getRowToPrint(7));
 
         assertEquals(""
-                + "...." + "...." + "\n"
-                + "PPPP" + "PPPP" + "\n"
-                + "...." + "...." + "\n"
-                + "...." + "...." + "\n"
-                + "...." + "...." + "\n"
-                + "...." + "...." + "\n"
-                + "pppp" + "pppp" + "\n"
-                + "...." + "...." + "\n", mBoard.getPrintFormat());
+                + StringUtil.line("...." + "....")
+                + StringUtil.line("PPPP" + "PPPP")
+                + StringUtil.line("...." + "....")
+                + StringUtil.line("...." + "....")
+                + StringUtil.line("...." + "....")
+                + StringUtil.line("...." + "....")
+                + StringUtil.line("pppp" + "pppp")
+                + StringUtil.line("...." + "...."), mBoard.getPrintFormat());
     }
 }

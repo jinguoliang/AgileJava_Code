@@ -1,11 +1,14 @@
 package com.jinux.agilejava.studensystem.report;
 
 import com.jinux.agilejava.studensystem.studentinfo.CourseSession;
+import com.jinux.agilejava.utils.StringUtil;
+
+import static com.jinux.agilejava.utils.StringUtil.NEWLINE;
 
 public class RosterReporter {
-    public static final String NEWLINE = System.getProperty("line.separator");
-    public static final String ROSTER_REPORT_HEADER = "Stutents" + NEWLINE
-            + "----" + NEWLINE;
+    public static final String ROSTER_REPORT_HEADER =
+            StringUtil.line("Stutents")
+            + StringUtil.line("----" );
     public static final String ROSTER_REPORT_FOOTER = NEWLINE + "# students = ";
 
     private final CourseSession mCourseSession;

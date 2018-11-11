@@ -1,6 +1,7 @@
 package com.jinux.agilejava.chess;
 
 import com.jinux.agilejava.chess.pieces.Pawn;
+import com.jinux.agilejava.utils.StringUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +10,6 @@ import java.util.List;
  * a chess board we can play on it
  */
 public class Board {
-    public static final String NEWLINE = "\n";
     private List<List<Pawn>> mPawns = new ArrayList<>();
 
 
@@ -52,8 +52,7 @@ public class Board {
     public String getPrintFormat() {
         StringBuilder builder = new StringBuilder();
         for (int i = 8; i >= 1; i--) {
-            builder.append(getRowToPrint(i));
-            builder.append(NEWLINE);
+            builder.append(StringUtil.line(getRowToPrint(i)));
         }
         return builder.toString();
     }

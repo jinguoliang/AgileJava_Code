@@ -1,6 +1,6 @@
 package com.jinux.agilejava.studensystem.studentinfo;
 
-import com.jinux.agilejava.studensystem.utils.DateUtil;
+import com.jinux.agilejava.utils.DateUtil;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

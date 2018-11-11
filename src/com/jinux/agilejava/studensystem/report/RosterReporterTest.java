@@ -1,8 +1,9 @@
 package com.jinux.agilejava.studensystem.report;
 
 import com.jinux.agilejava.studensystem.studentinfo.CourseSession;
-import com.jinux.agilejava.studensystem.utils.DateUtil;
 import com.jinux.agilejava.studensystem.studentinfo.Student;
+import com.jinux.agilejava.utils.DateUtil;
+import com.jinux.agilejava.utils.StringUtil;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -18,9 +19,10 @@ class RosterReporterTest {
         String rosterReport = new RosterReporter(session).getReport();
         System.out.printf(rosterReport);
         assertEquals(RosterReporter.ROSTER_REPORT_HEADER
-                        + "A" + RosterReporter.NEWLINE + "B" + RosterReporter.NEWLINE
+                        + StringUtil.line("A")
+                        + StringUtil.line("B")
                         + RosterReporter.ROSTER_REPORT_FOOTER
-                        + "2" + RosterReporter.NEWLINE,
+                        + StringUtil.line("2"),
                 rosterReport);
     }
 

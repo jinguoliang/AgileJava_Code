@@ -1,6 +1,6 @@
 package com.jinux.agilejava.chess.pieces;
 
-public class Pawn {
+public class Piece {
 
     public final static String COLOR_WHITE = "white";
     public final static String COLOR_BLACK = "black";
@@ -8,15 +8,7 @@ public class Pawn {
     private final String mColor;
     private Character mPrintChar;
 
-    public Pawn(String color) {
-        this.mColor = color;
-    }
-
-    public Pawn() {
-        this.mColor = COLOR_WHITE;
-    }
-
-    public Pawn(String colorWhite, Character p) {
+    public Piece(String colorWhite, Character p) {
         this.mColor = colorWhite;
         this.mPrintChar = p;
     }
@@ -27,5 +19,13 @@ public class Pawn {
 
     public char getPrintChar() {
         return mPrintChar;
+    }
+
+    public boolean isWhite() {
+        return COLOR_WHITE.equals(mColor);
+    }
+
+    public boolean isBlack() {
+        return COLOR_BLACK.equals(mColor);
     }
 }

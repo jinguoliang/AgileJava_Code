@@ -28,13 +28,13 @@ class BoardTest {
         System.out.printf(mBoard.getPrintFormat());
 
         assertEquals(""
-                + StringUtil.appendNewLine("...." + "....")
+                + StringUtil.appendNewLine("RNBQ" + "KBNR")
                 + StringUtil.appendNewLine("PPPP" + "PPPP")
                 + StringUtil.appendNewLine("...." + "....")
                 + StringUtil.appendNewLine("...." + "....")
                 + StringUtil.appendNewLine("...." + "....")
                 + StringUtil.appendNewLine("...." + "....")
                 + StringUtil.appendNewLine("pppp" + "pppp")
-                + StringUtil.appendNewLine("...." + "...."), mBoard.getPrintFormat());
+                + StringUtil.appendNewLine("rnbq" + "kbnr"), mBoard.getPrintFormat());
     }
 }

@@ -9,6 +9,15 @@ public class Piece {
         this.mPrintChar = p;
     }
 
+    public static Piece createWhite(char p) {
+        return new Piece(Color.WHITE, p);
+    }
+
+    public static Piece createBlack(char p) {
+        return new Piece(Color.BLACK, p);
+    }
+
+
     public Color getColor() {
         return mColor;
     }

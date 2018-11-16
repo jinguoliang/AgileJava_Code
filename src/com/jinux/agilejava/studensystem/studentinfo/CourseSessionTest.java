@@ -6,7 +6,8 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Date;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class CourseSessionTest {
 
@@ -67,8 +68,10 @@ class CourseSessionTest {
         assertTrue(sessionB.compareTo(sessionA) > 0);
 
         CourseSession sessionC = CourseSession.create("ENGL", 101, date);
-
         assertEquals(0, sessionC.compareTo(sessionB));
+
+        CourseSession sessionD = CourseSession.create("ENGL", 210, date);
+        assertTrue(sessionC.compareTo(sessionD) < 0);
     }
 
 }

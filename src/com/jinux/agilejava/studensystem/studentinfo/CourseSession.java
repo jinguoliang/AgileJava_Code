@@ -58,6 +58,11 @@ public class CourseSession implements Comparable<CourseSession> {
 
     @Override
     public int compareTo(CourseSession o) {
-        return getDepartment().compareTo(o.getDepartment());
+        int compareDepart = getDepartment().compareTo(o.getDepartment());
+        if (compareDepart == 0) {
+            return getNumber() - o.getNumber();
+        } else {
+            return compareDepart;
+        }
     }
 }

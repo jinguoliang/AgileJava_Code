@@ -16,9 +16,13 @@ public class CourseReportTest {
         report.add(CourseSession.create("ENGL", 101, date));
         report.add(CourseSession.create("CZEC", 200, date));
         report.add(CourseSession.create("ITAL", 410, date));
+        report.add(CourseSession.create("CZEC", 220, date));
+        report.add(CourseSession.create("ITAL", 330, date));
         assertEquals(
                 StringUtil.appendNewLine("CZEC 200")
+                +StringUtil.appendNewLine("CZEC 220")
                         + StringUtil.appendNewLine("ENGL 101")
+                        + StringUtil.appendNewLine("ITAL 330")
                         + StringUtil.appendNewLine("ITAL 410"),
                 report.text());
     }

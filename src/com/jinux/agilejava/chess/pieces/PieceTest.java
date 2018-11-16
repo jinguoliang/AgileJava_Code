@@ -3,8 +3,6 @@ package com.jinux.agilejava.chess.pieces;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static com.jinux.agilejava.chess.pieces.Piece.COLOR_BLACK;
-import static com.jinux.agilejava.chess.pieces.Piece.COLOR_WHITE;
 import static org.junit.jupiter.api.Assertions.*;
 
 class PieceTest {
@@ -14,17 +12,17 @@ class PieceTest {
 
     @BeforeEach
     void setUp() {
-        piece1 = new Piece(COLOR_WHITE, 'p');
-        piece2 = new Piece(COLOR_BLACK, 'P');
+        piece1 = new Piece(Piece.Color.WHITE, 'p');
+        piece2 = new Piece(Piece.Color.BLACK, 'P');
     }
     @Test
     void testCreate() {
 
-        assertEquals(COLOR_WHITE, piece1.getColor());
+        assertEquals(Piece.Color.WHITE, piece1.getColor());
         assertEquals('p', piece1.getPrintChar());
 
 
-        assertEquals(COLOR_BLACK, piece2.getColor());
+        assertEquals(Piece.Color.BLACK, piece2.getColor());
         assertEquals('P', piece2.getPrintChar());
     }
 

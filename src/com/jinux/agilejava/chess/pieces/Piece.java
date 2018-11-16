@@ -2,18 +2,14 @@ package com.jinux.agilejava.chess.pieces;
 
 public class Piece {
 
-    public final static String COLOR_WHITE = "white";
-    public final static String COLOR_BLACK = "black";
-
-    private final String mColor;
+    private final Color mColor;
     private Character mPrintChar;
-
-    public Piece(String colorWhite, Character p) {
-        this.mColor = colorWhite;
+    public Piece(Color color, Character p) {
+        this.mColor = color;
         this.mPrintChar = p;
     }
 
-    public String getColor() {
+    public Color getColor() {
         return mColor;
     }
 
@@ -22,10 +18,12 @@ public class Piece {
     }
 
     public boolean isWhite() {
-        return COLOR_WHITE.equals(mColor);
+        return mColor == Color.WHITE;
     }
 
     public boolean isBlack() {
-        return COLOR_BLACK.equals(mColor);
+        return mColor == Color.BLACK;
     }
+
+    public enum Color {WHITE, BLACK}
 }

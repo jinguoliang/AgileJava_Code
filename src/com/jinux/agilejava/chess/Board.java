@@ -21,19 +21,19 @@ public class Board {
 
         List<Piece> mRow1 = mPieces.get(0);
         mRow1.clear();
-        "rnbqkbnr".chars().forEach(i -> mRow1.add(new Piece(Piece.COLOR_WHITE, (char) i)));
+        "rnbqkbnr".chars().forEach(i -> mRow1.add(new Piece(Piece.Color.WHITE, (char) i)));
 
         List<Piece> mRow8 = mPieces.get(7);
         mRow8.clear();
-        "RNBQKBNR".chars().forEach(i -> mRow8.add(new Piece(Piece.COLOR_WHITE, (char) i)));
+        "RNBQKBNR".chars().forEach(i -> mRow8.add(new Piece(Piece.Color.WHITE, (char) i)));
 
         List<Piece> mRow2 = mPieces.get(1);
         mRow2.clear();
         List<Piece> mRow7 = mPieces.get(7 - 1);
         mRow7.clear();
         for (int i = 0; i < 8; i++) {
-            mRow2.add(new Piece(Piece.COLOR_WHITE, 'p'));
-            mRow7.add(new Piece(Piece.COLOR_BLACK, 'P'));
+            mRow2.add(new Piece(Piece.Color.WHITE, 'p'));
+            mRow7.add(new Piece(Piece.Color.WHITE, 'P'));
         }
 
     }
@@ -41,7 +41,7 @@ public class Board {
     private List<Piece> createSpaceRow() {
         List<Piece> row = new ArrayList<>();
         for (int i = 0; i < 8; i++) {
-            row.add(new Piece(Piece.COLOR_WHITE, '.'));
+            row.add(new Piece(Piece.Color.WHITE, '.'));
         }
         return row;
     }

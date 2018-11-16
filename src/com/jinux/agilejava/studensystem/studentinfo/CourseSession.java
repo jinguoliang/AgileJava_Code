@@ -2,7 +2,7 @@ package com.jinux.agilejava.studensystem.studentinfo;
 
 import java.util.*;
 
-public class CourseSession {
+public class CourseSession implements Comparable<CourseSession> {
     private Date mStartDate;
     private String mDepartment;
     private int mNumber;
@@ -54,5 +54,10 @@ public class CourseSession {
 
     public void setNumberOfCredits(int credits) {
         mNumberOfCredits = credits;
+    }
+
+    @Override
+    public int compareTo(CourseSession o) {
+        return getDepartment().compareTo(o.getDepartment());
     }
 }

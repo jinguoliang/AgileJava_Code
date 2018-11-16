@@ -7,6 +7,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class StudentTest {
 
+    private static final double GRADE_TOLERANCE = 0.05;
+
     private Student mStudentA;
 
     @BeforeEach
@@ -54,5 +56,50 @@ class StudentTest {
         assertTrue(mStudentA.isInState());
         mStudentA.setState("MD");
         mStudentA.setState(Student.IN_STATE);
+    }
+
+    @Test
+    void testCalculateGpa() {
+        assertGpa(0.0);
+        mStudentA.addGrade(Student.Grade.A);
+        assertGpa(4.0);
+        mStudentA.addGrade(Student.Grade.B);
+        assertGpa(3.5);
+        mStudentA.addGrade(Student.Grade.C);
+        assertGpa(3.0);
+        mStudentA.addGrade(Student.Grade.D);
+        assertGpa(2.5);
+        mStudentA.addGrade(Student.Grade.E);
+        assertGpa(2.0);
+    }
+
+    @Test
+    void testCalculateHonorsStudentGpa() {
+        assertGpa(createHonorsStudent(), 0f);
+        assertGpa(createHonorsStudent(Student.Grade.A), 5f);
+        assertGpa(createHonorsStudent(Student.Grade.B), 4f);
+        assertGpa(createHonorsStudent(Student.Grade.C), 3f);
+        assertGpa(createHonorsStudent(Student.Grade.D), 2f);
+        assertGpa(createHonorsStudent(Student.Grade.E), 0f);
+    }
+
+    private Student createHonorsStudent(Student.Grade grade) {
+        Student student = createHonorsStudent();
+        student.addGrade(grade);
+        return student;
+    }
+
+    private Student createHonorsStudent() {
+        Student student = new Student("a");
+        student.setGradingStrategy(new HonorsGradingStrategy());
+        return student;
+    }
+
+    private void assertGpa(double expect) {
+        assertGpa(mStudentA, expect);
+    }
+
+    private void assertGpa(Student student, double expect) {
+        assertEquals(expect, student.getGpa(), GRADE_TOLERANCE);
     }
 }

@@ -7,31 +7,50 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class PieceTest {
 
-    private Piece piece1;
-    private Piece piece2;
 
     @BeforeEach
     void setUp() {
-        piece1 = new Piece(Piece.Color.WHITE, 'p');
-        piece2 = new Piece(Piece.Color.BLACK, 'P');
     }
     @Test
     void testCreate() {
 
-        assertEquals(Piece.Color.WHITE, piece1.getColor());
-        assertEquals('p', piece1.getPrintChar());
+        verifyCreation(Piece.createWhitePawn(), Piece.createBlackPawn(),
+                Piece.Type.PAWN, Piece.PAWN_REPRESENTATION);
 
+        verifyCreation(Piece.createWhiteRook(), Piece.createBlackRook(),
+                Piece.Type.ROOK, Piece.ROOK_REPRESENTATION);
 
-        assertEquals(Piece.Color.BLACK, piece2.getColor());
-        assertEquals('P', piece2.getPrintChar());
+        verifyCreation(Piece.createWhiteKnight(), Piece.createBlackKnight(),
+                Piece.Type.KNIGHT, Piece.KNIGHT_REPRESENTATION);
+
+        verifyCreation(Piece.createWhiteBishop(), Piece.createBlackBishop(),
+                Piece.Type.BISHOP, Piece.BISHOP_REPRESENTATION);
+
+        verifyCreation(Piece.createWhiteQueen(), Piece.createBlackQueen(),
+                Piece.Type.QUEEN, Piece.QUEEN_REPRESENTATION);
+
+        verifyCreation(Piece.createWhiteKing(), Piece.createBlackKing(),
+                Piece.Type.KING, Piece.KING_REPRESENTATION);
+
+        Piece blank = Piece.noPiece();
+        assertEquals('.', blank.getRepresentation());
+        assertEquals(Piece.Type.NO_PIECE, blank.getType());
+    }
+
+    private void verifyCreation(Piece whitePiece, Piece blackPiece,
+                                Piece.Type type, char representation) {
+        assertTrue(whitePiece.isWhite());
+        assertEquals(type, whitePiece.getType());
+        assertEquals(representation, whitePiece.getRepresentation());
+
+        assertTrue(blackPiece.isBlack());
+        assertEquals(type, blackPiece.getType());
+        assertEquals(Character.toUpperCase(representation),
+                blackPiece.getRepresentation());
     }
 
     @Test
     void testColor() {
-        assertTrue(piece1.isWhite());
-        assertFalse(piece2.isWhite());
-        assertFalse(piece1.isBlack());
-        assertTrue(piece2.isBlack());
     }
 
 }

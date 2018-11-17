@@ -18,37 +18,52 @@ public class Board {
             mPieces.add(createSpaceRow());
         }
 
-
         List<Piece> mRow1 = mPieces.get(0);
         mRow1.clear();
-        "rnbqkbnr".chars().forEach(i -> mRow1.add(Piece.createWhite((char) i)));
+        mRow1.add(Piece.createWhiteRook());
+        mRow1.add(Piece.createWhiteKnight());
+        mRow1.add(Piece.createWhiteBishop());
+        mRow1.add(Piece.createWhiteQueen());
+        mRow1.add(Piece.createWhiteKing());
+        mRow1.add(Piece.createWhiteBishop());
+        mRow1.add(Piece.createWhiteKnight());
+        mRow1.add(Piece.createWhiteRook());
 
         List<Piece> mRow8 = mPieces.get(7);
         mRow8.clear();
-        "RNBQKBNR".chars().forEach(i -> mRow8.add(Piece.createBlack((char) i)));
+        mRow8.add(Piece.createBlackRook());
+        mRow8.add(Piece.createBlackKnight());
+        mRow8.add(Piece.createBlackBishop());
+        mRow8.add(Piece.createBlackQueen());
+        mRow8.add(Piece.createBlackKing());
+        mRow8.add(Piece.createBlackBishop());
+        mRow8.add(Piece.createBlackKnight());
+        mRow8.add(Piece.createBlackRook());
 
         List<Piece> mRow2 = mPieces.get(1);
         mRow2.clear();
         List<Piece> mRow7 = mPieces.get(7 - 1);
         mRow7.clear();
         for (int i = 0; i < 8; i++) {
-            mRow2.add(Piece.createWhite('p'));
-            mRow7.add(Piece.createBlack('P'));
+            mRow2.add(Piece.createWhitePawn());
+            mRow7.add(Piece.createBlackPawn());
         }
-
     }
 
     private List<Piece> createSpaceRow() {
         List<Piece> row = new ArrayList<>();
         for (int i = 0; i < 8; i++) {
-            row.add(new Piece(Piece.Color.WHITE, '.'));
+            row.add(Piece.noPiece());
         }
         return row;
     }
 
 
-    public int getPieceCount() {
-        return 32;
+    public int getPieceCount(Piece.Color color, char representation) {
+        return (int) mPieces.stream().flatMap(pieces -> pieces.stream())
+                .filter(piece -> piece.getColor() == color
+                        && Character.toLowerCase(piece.getRepresentation()) == representation)
+                .count();
     }
 
 
@@ -56,7 +71,7 @@ public class Board {
         List<Piece> list = mPieces.get(i - 1);
 
         StringBuilder builder = new StringBuilder();
-        list.forEach(piece -> builder.append(piece.getPrintChar()));
+        list.forEach(piece -> builder.append(piece.getRepresentation()));
         return builder.toString();
     }
 

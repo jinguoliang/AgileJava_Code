@@ -1,5 +1,6 @@
 package com.jinux.agilejava.chess;
 
+import com.jinux.agilejava.chess.pieces.Piece;
 import com.jinux.agilejava.utils.StringUtil;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -18,14 +19,9 @@ class BoardTest {
 
     @Test
     void testCreate() {
-        assertEquals(32, mBoard.getPieceCount());
-
         mBoard.initialize();
         assertEquals("pppp" + "pppp", mBoard.getRowToPrint(2));
         assertEquals("PPPP" + "PPPP", mBoard.getRowToPrint(7));
-
-        String blankRank = StringUtil.appendNewLine("...." + "....");
-        System.out.printf(mBoard.getPrintFormat());
 
         assertEquals(""
                 + StringUtil.appendNewLine("RNBQ" + "KBNR")
@@ -36,5 +32,13 @@ class BoardTest {
                 + StringUtil.appendNewLine("...." + "....")
                 + StringUtil.appendNewLine("pppp" + "pppp")
                 + StringUtil.appendNewLine("rnbq" + "kbnr"), mBoard.getPrintFormat());
+    }
+
+    @Test
+    void testCount() {
+        mBoard.initialize();
+
+        assertEquals(8, mBoard.getPieceCount(Piece.Color.WHITE, Piece.PAWN_REPRESENTATION));
+        assertEquals(8, mBoard.getPieceCount(Piece.Color.BLACK, Piece.PAWN_REPRESENTATION));
     }
 }

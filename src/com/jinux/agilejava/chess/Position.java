@@ -21,7 +21,6 @@ public class Position {
         return row;
     }
 
-
     public int getColumn() {
         return column;
     }

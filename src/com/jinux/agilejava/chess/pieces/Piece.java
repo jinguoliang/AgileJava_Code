@@ -94,16 +94,16 @@ public class Piece {
         return type;
     }
 
+    public Color getColor() {
+        return mColor;
+    }
+
     public char getRepresentation() {
         if (mColor == Color.WHITE) {
             return type.representation;
         } else {
             return Character.toUpperCase(type.representation);
         }
-    }
-
-    public Color getColor() {
-        return mColor;
     }
 
     public enum Color {WHITE, BLACK}
@@ -116,6 +116,7 @@ public class Piece {
         QUEEN(QUEEN_REPRESENTATION),
         PAWN(PAWN_REPRESENTATION),
         NO_PIECE(BLANK_REPRESENTATION);
+
         private final char representation;
 
         Type(char representation) {

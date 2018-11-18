@@ -21,15 +21,21 @@ public class Board {
     public static final int SCORE_PAWN = 1;
     public static final float SCORE_PAWN_WHEN_HAVE_OTHER_PAWN_IN_SAME_COLUMN = 0.5f;
     public static final int SCORE_ROOK = 5;
-    public static final int SCORE_QUEEN = 5;
+    public static final int SCORE_QUEEN = 9;
     public static final int SCORE_BISHOP = 3;
     public static final float SCORE_KNIGHT = 2.5f;
     public static final int FIRST_ROW_INDEX = 0;
     private static final int SECOND_LAST_INDEX = LAST_INDEX - 1;
+
     private List<List<Piece>> mPieces = new ArrayList<>();
+
     private boolean isInvert = false;
 
     Board() {
+        initWithBlankPiece();
+    }
+
+    private void initWithBlankPiece() {
         IntStream.range(0, ROW_COUNT).forEach(i -> mPieces.add(createSpaceRow()));
     }
 
@@ -133,10 +139,13 @@ public class Board {
         mPieces.get(position.getRow()).set(position.getColumn(), Piece.create(color, type));
     }
 
-    public float getWhiteScore() {
-        Optional<Float> optionalFloat = mPieces.stream().flatMap(Collection::stream).map(this::getPieceScore).reduce((sum, n) -> sum + n);
+    public float getAllScore(Piece.Color color) {
+        Optional<Float> optionalFloat = mPieces.stream()
+                .flatMap(Collection::stream)
+                .filter(piece -> piece.getColor() == color)
+                .map(this::getPieceScore).reduce((sum, n) -> sum + n);
         float excludePawn = optionalFloat.isPresent() ? optionalFloat.get() : 0;
-        return excludePawn + computePawnScore(Piece.Color.WHITE);
+        return excludePawn + computePawnScore(color);
     }
 
     private float getPieceScore(Piece piece) {
@@ -149,9 +158,9 @@ public class Board {
                 return SCORE_BISHOP;
             case KNIGHT:
                 return SCORE_KNIGHT;
+            case KING:
             case PAWN:
             case NO_PIECE:
-            case KING:
             default:
                 return 0;
         }

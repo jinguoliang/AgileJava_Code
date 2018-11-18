@@ -33,7 +33,7 @@ class PieceTest {
                 Piece.Type.KING, Piece.KING_REPRESENTATION);
 
         Piece blank = Piece.noPiece();
-        assertEquals('.', blank.getRepresentation());
+        assertEquals(Piece.BLANK_REPRESENTATION, blank.getRepresentation());
         assertEquals(Piece.Type.NO_PIECE, blank.getType());
     }
 
@@ -47,10 +47,6 @@ class PieceTest {
         assertEquals(type, blackPiece.getType());
         assertEquals(Character.toUpperCase(representation),
                 blackPiece.getRepresentation());
-    }
-
-    @Test
-    void testColor() {
     }
 
 }

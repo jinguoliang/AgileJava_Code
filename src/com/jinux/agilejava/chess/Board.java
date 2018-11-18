@@ -6,22 +6,35 @@ import com.jinux.agilejava.utils.StringUtil;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 /**
  * a chess board we can play on it
  */
 public class Board {
+    public static final int COLUMN_COUNT = 8;
+    public static final int ROW_COUNT = COLUMN_COUNT;
+    public static final int LAST_INDEX = COLUMN_COUNT - 1;
+    public static final int SECOND_INDEX = 1;
+    public static final int SCORE_PAWN = 1;
+    public static final float SCORE_PAWN_WHEN_HAVE_OTHER_PAWN_IN_SAME_COLUMN = 0.5f;
+    public static final int SCORE_ROOK = 5;
+    public static final int SCORE_QUEEN = 5;
+    public static final int SCORE_BISHOP = 3;
+    public static final float SCORE_KNIGHT = 2.5f;
+    public static final int FIRST_ROW_INDEX = 0;
+    private static final int SECOND_LAST_INDEX = LAST_INDEX - 1;
     private List<List<Piece>> mPieces = new ArrayList<>();
     private boolean isInvert = false;
 
     Board() {
-        for (int i = 0; i < 8; i++) {
-            mPieces.add(createSpaceRow());
-        }
+        IntStream.range(0, ROW_COUNT).forEach(i -> mPieces.add(createSpaceRow()));
     }
 
     public void initialize() {
-        List<Piece> mRow1 = mPieces.get(0);
+        List<Piece> mRow1 = mPieces.get(FIRST_ROW_INDEX);
         mRow1.clear();
         mRow1.add(Piece.createWhiteRook());
         mRow1.add(Piece.createWhiteKnight());
@@ -32,7 +45,7 @@ public class Board {
         mRow1.add(Piece.createWhiteKnight());
         mRow1.add(Piece.createWhiteRook());
 
-        List<Piece> mRow8 = mPieces.get(7);
+        List<Piece> mRow8 = mPieces.get(LAST_INDEX);
         mRow8.clear();
         mRow8.add(Piece.createBlackRook());
         mRow8.add(Piece.createBlackKnight());
@@ -43,29 +56,25 @@ public class Board {
         mRow8.add(Piece.createBlackKnight());
         mRow8.add(Piece.createBlackRook());
 
-        List<Piece> mRow2 = mPieces.get(1);
-        mRow2.clear();
-        List<Piece> mRow7 = mPieces.get(7 - 1);
-        mRow7.clear();
-        for (int i = 0; i < 8; i++) {
-            mRow2.add(Piece.createWhitePawn());
-            mRow7.add(Piece.createBlackPawn());
-        }
+        List<Piece> mRow2 = mPieces.get(SECOND_INDEX);
+        List<Piece> mRow7 = mPieces.get(SECOND_LAST_INDEX);
+        IntStream.range(0, COLUMN_COUNT).forEach(i -> {
+            mRow2.set(i, Piece.createWhitePawn());
+            mRow7.set(i, Piece.createBlackPawn());
+        });
     }
 
     private List<Piece> createSpaceRow() {
-        List<Piece> row = new ArrayList<>();
-        for (int i = 0; i < 8; i++) {
-            row.add(Piece.noPiece());
-        }
-        return row;
+        return IntStream.range(0, COLUMN_COUNT)
+                .mapToObj(i -> Piece.noPiece())
+                .collect(Collectors.toList());
     }
 
 
-    public int getPieceCount(Piece.Color color, char representation) {
-        return (int) mPieces.stream().flatMap(pieces -> pieces.stream())
+    public int getPieceCount(Piece.Color color, Piece.Type type) {
+        return (int) mPieces.stream().flatMap(Collection::stream)
                 .filter(piece -> piece.getColor() == color
-                        && Character.toLowerCase(piece.getRepresentation()) == representation)
+                        && piece.getType() == type)
                 .count();
     }
 
@@ -102,7 +111,7 @@ public class Board {
     }
 
     private int getInvertIndex(int index) {
-        return 7 - index;
+        return LAST_INDEX - index;
     }
 
     public boolean getInvert() {
@@ -122,5 +131,61 @@ public class Board {
     public void setPieceAtPosition(String posStr, Piece.Color color, Piece.Type type) {
         Position position = Position.by(posStr);
         mPieces.get(position.getRow()).set(position.getColumn(), Piece.create(color, type));
+    }
+
+    public float getWhiteScore() {
+        Optional<Float> optionalFloat = mPieces.stream().flatMap(Collection::stream).map(this::getPieceScore).reduce((sum, n) -> sum + n);
+        float excludePawn = optionalFloat.isPresent() ? optionalFloat.get() : 0;
+        return excludePawn + computePawnScore(Piece.Color.WHITE);
+    }
+
+    private float getPieceScore(Piece piece) {
+        switch (piece.getType()) {
+            case ROOK:
+                return SCORE_ROOK;
+            case QUEEN:
+                return SCORE_QUEEN;
+            case BISHOP:
+                return SCORE_BISHOP;
+            case KNIGHT:
+                return SCORE_KNIGHT;
+            case PAWN:
+            case NO_PIECE:
+            case KING:
+            default:
+                return 0;
+        }
+    }
+
+    float computePawnScore(Piece.Color color) {
+        float score = 0;
+        for (int column = 0; column < COLUMN_COUNT; column++) {
+            score += computeOneColumnPawnScore(color, column);
+        }
+        return score;
+    }
+
+    float computeOneColumnPawnScore(Piece.Color color, int column) {
+        int count = computeOneColumnPawnCount(color, column);
+
+        if (count == 1) {
+            return SCORE_PAWN;
+        }
+        if (count > 1) {
+            return count * SCORE_PAWN_WHEN_HAVE_OTHER_PAWN_IN_SAME_COLUMN;
+        }
+        return 0;
+    }
+
+    int computeOneColumnPawnCount(Piece.Color color, int column) {
+        int count = 0;
+        for (int row = 0; row < ROW_COUNT; row++) {
+            Piece piece = mPieces.get(row).get(column);
+            if (piece.getType() == Piece.Type.PAWN
+                    && piece.getColor() == color) {
+                count++;
+            }
+        }
+        return count;
     }
 }

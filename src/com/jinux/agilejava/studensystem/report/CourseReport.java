@@ -17,7 +17,7 @@ public class CourseReport {
     }
 
     public String text() {
-        mSessions.sort(Comparator.comparing(CourseSession::getDepartment));
+        Collections.sort(mSessions);
         StringBuilder builder = new StringBuilder();
         for (CourseSession session: mSessions) {
             builder.append(StringUtil.appendNewLine(session.getDepartment() + " " + session.getNumber()));

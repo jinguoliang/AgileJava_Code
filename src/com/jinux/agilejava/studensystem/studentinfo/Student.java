@@ -62,5 +62,17 @@ public class Student {
         mGrades.add(grade);
     }
 
-    enum Grade {A, B, C, D, F}
+    enum Grade {
+        A(4), B(3), C(2), D(1), F(0);
+
+        private final float points;
+
+        Grade(float points) {
+            this.points = points;
+        }
+
+        public float getPoints() {
+            return points;
+        }
+    }
 }

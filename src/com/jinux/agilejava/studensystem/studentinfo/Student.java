@@ -15,7 +15,7 @@ public class Student {
 
     private String mState;
 
-    private GradingStrategy mGradingStrategy = new RegularGradingStrategy();
+    private GradingStrategy mGradingStrategy = new BasicGradingStrategy();
 
     private List<Grade> mGrades = new ArrayList<>();
 

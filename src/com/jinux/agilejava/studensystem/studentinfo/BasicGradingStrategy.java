@@ -1,10 +1,8 @@
 package com.jinux.agilejava.studensystem.studentinfo;
 
-public abstract class BaseGradingStrategy implements GradingStrategy {
+public class BasicGradingStrategy implements GradingStrategy {
     @Override
-    public abstract float gradePointsFor(Student.Grade grade);
-
-    protected float baseGradePointsFor(Student.Grade grade) {
+    public float gradePointsFor(Student.Grade grade) {
         switch (grade) {
             case A:
                 return 4f;

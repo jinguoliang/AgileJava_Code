@@ -62,5 +62,5 @@ public class Student {
         mGrades.add(grade);
     }
 
-    enum Grade {A, B, C, D, E}
+    enum Grade {A, B, C, D, F}
 }

@@ -69,7 +69,7 @@ class StudentTest {
         assertGpa(3.0);
         mStudentA.addGrade(Student.Grade.D);
         assertGpa(2.5);
-        mStudentA.addGrade(Student.Grade.E);
+        mStudentA.addGrade(Student.Grade.F);
         assertGpa(2.0);
     }
 
@@ -80,7 +80,7 @@ class StudentTest {
         assertGpa(createHonorsStudent(Student.Grade.B), 4f);
         assertGpa(createHonorsStudent(Student.Grade.C), 3f);
         assertGpa(createHonorsStudent(Student.Grade.D), 2f);
-        assertGpa(createHonorsStudent(Student.Grade.E), 0f);
+        assertGpa(createHonorsStudent(Student.Grade.F), 0f);
     }
 
     private Student createHonorsStudent(Student.Grade grade) {

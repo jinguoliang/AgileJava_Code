@@ -3,13 +3,15 @@ package com.jinux.agilejava.studensystem.studentinfo;
 import java.util.*;
 
 public class CourseSession implements Comparable<CourseSession> {
+    public static final int ONE_WEEK = 7;
+    private static final int DAYS_FROM_FRIDAY_TO_MONDAY = 3;
     private Date mStartDate;
     private String mDepartment;
     private int mNumber;
     private List<Student> mAllStudents = new ArrayList<>();
     private int mNumberOfCredits;
 
-    private CourseSession(String department, int number, Date startDate) {
+    protected CourseSession(String department, int number, Date startDate) {
         mDepartment = department;
         mNumber = number;
         mStartDate = startDate;
@@ -43,9 +45,13 @@ public class CourseSession implements Comparable<CourseSession> {
     public Date getEndDate() {
         Calendar calendar = new GregorianCalendar();
         calendar.setTime(mStartDate);
-        int numberOfDays = 7 * 16 - 3;
+        int numberOfDays = ONE_WEEK * getSessionLength() - DAYS_FROM_FRIDAY_TO_MONDAY;
         calendar.add(Calendar.DAY_OF_YEAR, numberOfDays);
         return calendar.getTime();
+    }
+
+    protected int getSessionLength() {
+        return 16;
     }
 
     public Date getStartDate() {

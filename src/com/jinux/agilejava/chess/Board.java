@@ -3,10 +3,7 @@ package com.jinux.agilejava.chess;
 import com.jinux.agilejava.chess.pieces.Piece;
 import com.jinux.agilejava.utils.StringUtil;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -20,16 +17,18 @@ public class Board {
     public static final int SECOND_INDEX = 1;
     public static final int SCORE_PAWN = 1;
     public static final float SCORE_PAWN_WHEN_HAVE_OTHER_PAWN_IN_SAME_COLUMN = 0.5f;
-    public static final int SCORE_ROOK = 5;
-    public static final int SCORE_QUEEN = 9;
-    public static final int SCORE_BISHOP = 3;
+    public static final float SCORE_ROOK = 5;
+    public static final float SCORE_QUEEN = 9;
+    public static final float SCORE_BISHOP = 3;
     public static final float SCORE_KNIGHT = 2.5f;
+    public static final float SCORE_ZERO = 0;
     public static final int FIRST_ROW_INDEX = 0;
     private static final int SECOND_LAST_INDEX = LAST_INDEX - 1;
 
     private List<List<Piece>> mPieces = new ArrayList<>();
 
     private boolean isInvert = false;
+    private EnumMap<Piece.Type, Float> scoreMap;
 
     Board() {
         initWithBlankPiece();
@@ -149,21 +148,21 @@ public class Board {
     }
 
     private float getPieceScore(Piece piece) {
-        switch (piece.getType()) {
-            case ROOK:
-                return SCORE_ROOK;
-            case QUEEN:
-                return SCORE_QUEEN;
-            case BISHOP:
-                return SCORE_BISHOP;
-            case KNIGHT:
-                return SCORE_KNIGHT;
-            case KING:
-            case PAWN:
-            case NO_PIECE:
-            default:
-                return 0;
+        if (scoreMap == null) {
+            loadScoreMap();
         }
+        return scoreMap.get(piece.getType());
+    }
+
+    private void loadScoreMap() {
+        scoreMap = new EnumMap<>(Piece.Type.class);
+        scoreMap.put(Piece.Type.ROOK, SCORE_ROOK);
+        scoreMap.put(Piece.Type.QUEEN, SCORE_QUEEN);
+        scoreMap.put(Piece.Type.BISHOP, SCORE_BISHOP);
+        scoreMap.put(Piece.Type.KNIGHT, SCORE_KNIGHT);
+        scoreMap.put(Piece.Type.KING, SCORE_ZERO);
+        scoreMap.put(Piece.Type.PAWN, SCORE_ZERO);
+        scoreMap.put(Piece.Type.NO_PIECE, SCORE_ZERO);
     }
 
     float computePawnScore(Piece.Color color) {

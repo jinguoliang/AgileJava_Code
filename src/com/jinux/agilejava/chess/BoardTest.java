@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import static com.jinux.agilejava.chess.pieces.Piece.Color.WHITE;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class BoardTest {
@@ -76,95 +77,17 @@ class BoardTest {
         assertEquals(1, board.getTotalCount());
     }
 
-    private void assertWhiteScore(float expect) {
-        assertEquals(expect, board.getAllScore(Piece.Color.WHITE), 0.05f);
-    }
-
-    private void assertBlackScore(float expect) {
-        assertEquals(expect, board.getAllScore(Piece.Color.BLACK), 0.05f);
-    }
-
     @Test
     void testComputeOneColumnCount() {
-        board.setPieceAtPosition("a1", Piece.Color.WHITE, Piece.Type.PAWN);
-        assertEquals(1, board.computeOneColumnPawnCount(Piece.Color.WHITE, 0));
-        board.setPieceAtPosition("a2", Piece.Color.WHITE, Piece.Type.PAWN);
-        assertEquals(2, board.computeOneColumnPawnCount(Piece.Color.WHITE, 0));
+        board.setPieceAtPosition("a1", WHITE, Piece.Type.PAWN);
+        assertOneColumnPawnCount(1);
+        board.setPieceAtPosition("a2", WHITE, Piece.Type.PAWN);
+        assertOneColumnPawnCount(2);
     }
 
-    @Test
-    void testComputeOneColumnScore() {
-        board.setPieceAtPosition("a1", Piece.Color.WHITE, Piece.Type.PAWN);
-        assertEquals(1, board.computeOneColumnPawnScore(Piece.Color.WHITE, 0), 0.05f);
-        board.setPieceAtPosition("a2", Piece.Color.WHITE, Piece.Type.PAWN);
-        assertEquals(1, board.computeOneColumnPawnScore(Piece.Color.WHITE, 0), 0.05f);
-        board.setPieceAtPosition("a3", Piece.Color.WHITE, Piece.Type.PAWN);
-        assertEquals(1.5f, board.computeOneColumnPawnScore(Piece.Color.WHITE, 0), 0.05f);
-        board.setPieceAtPosition("b3", Piece.Color.WHITE, Piece.Type.PAWN);
-        assertEquals(1.5f, board.computeOneColumnPawnScore(Piece.Color.WHITE, 0), 0.05f);
+    private void assertOneColumnPawnCount(int expect) {
+        assertEquals(expect, board.computeOneColumnPawnCount(WHITE, 0));
     }
 
-    @Test
-    void testComputeAllColumnScore() {
-        board.setPieceAtPosition("a1", Piece.Color.WHITE, Piece.Type.PAWN);
-        assertEquals(1, board.computePawnScore(Piece.Color.WHITE), 0.05f);
-        board.setPieceAtPosition("a2", Piece.Color.WHITE, Piece.Type.PAWN);
-        assertEquals(1, board.computePawnScore(Piece.Color.WHITE), 0.05f);
-        board.setPieceAtPosition("a3", Piece.Color.WHITE, Piece.Type.PAWN);
-        assertEquals(1.5f, board.computePawnScore(Piece.Color.WHITE), 0.05f);
-        board.setPieceAtPosition("b3", Piece.Color.WHITE, Piece.Type.PAWN);
-        assertEquals(2.5f, board.computePawnScore(Piece.Color.WHITE), 0.05f);
-    }
 
-    @Test
-    void testComputeAllScore() {
-        board.setPieceAtPosition("a7", Piece.Color.BLACK, Piece.Type.PAWN);
-        assertBlackScore(1);
-        board.setPieceAtPosition("b6", Piece.Color.BLACK, Piece.Type.PAWN);
-        assertBlackScore(2);
-        board.setPieceAtPosition("b8", Piece.Color.BLACK, Piece.Type.KING);
-        assertBlackScore(2);
-        board.setPieceAtPosition("c7", Piece.Color.BLACK, Piece.Type.PAWN);
-        assertBlackScore(3);
-        board.setPieceAtPosition("c8", Piece.Color.BLACK, Piece.Type.ROOK);
-        assertBlackScore(8);
-        board.setPieceAtPosition("d7", Piece.Color.BLACK, Piece.Type.BISHOP);
-        assertBlackScore(11);
-        board.setPieceAtPosition("e6", Piece.Color.BLACK, Piece.Type.QUEEN);
-        assertBlackScore(20);
-
-        board.setPieceAtPosition("e1", Piece.Color.WHITE, Piece.Type.ROOK);
-        assertBlackScore(20);
-        assertWhiteScore(5);
-        board.setPieceAtPosition("f1", Piece.Color.WHITE, Piece.Type.KING);
-        assertWhiteScore(5);
-        board.setPieceAtPosition("f2", Piece.Color.WHITE, Piece.Type.PAWN);
-        board.setPieceAtPosition("f3", Piece.Color.WHITE, Piece.Type.PAWN);
-        board.setPieceAtPosition("f4", Piece.Color.WHITE, Piece.Type.KNIGHT);
-        board.setPieceAtPosition("g2", Piece.Color.WHITE, Piece.Type.PAWN);
-        board.setPieceAtPosition("g4", Piece.Color.WHITE, Piece.Type.QUEEN);
-        board.setPieceAtPosition("h3", Piece.Color.WHITE, Piece.Type.PAWN);
-
-        assertWhiteScore(19.5f);
-    }
-
-    void createSampleBoardLayout(Board board) {
-        board.setPieceAtPosition("a7", Piece.Color.BLACK, Piece.Type.PAWN);
-        board.setPieceAtPosition("b6", Piece.Color.BLACK, Piece.Type.PAWN);
-        board.setPieceAtPosition("b8", Piece.Color.BLACK, Piece.Type.KING);
-        board.setPieceAtPosition("c7", Piece.Color.BLACK, Piece.Type.PAWN);
-        board.setPieceAtPosition("c8", Piece.Color.BLACK, Piece.Type.PAWN);
-        board.setPieceAtPosition("a7", Piece.Color.BLACK, Piece.Type.ROOK);
-        board.setPieceAtPosition("e1", Piece.Color.WHITE, Piece.Type.ROOK);
-
-        board.setPieceAtPosition("d7", Piece.Color.BLACK, Piece.Type.BISHOP);
-        board.setPieceAtPosition("e6", Piece.Color.BLACK, Piece.Type.QUEEN);
-        board.setPieceAtPosition("f1", Piece.Color.WHITE, Piece.Type.KING);
-        board.setPieceAtPosition("f2", Piece.Color.WHITE, Piece.Type.PAWN);
-        board.setPieceAtPosition("f3", Piece.Color.WHITE, Piece.Type.PAWN);
-        board.setPieceAtPosition("f4", Piece.Color.WHITE, Piece.Type.KNIGHT);
-        board.setPieceAtPosition("g2", Piece.Color.WHITE, Piece.Type.PAWN);
-        board.setPieceAtPosition("g4", Piece.Color.WHITE, Piece.Type.QUEEN);
-        board.setPieceAtPosition("h3", Piece.Color.WHITE, Piece.Type.PAWN);
-    }
 }

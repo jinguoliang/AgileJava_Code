@@ -15,12 +15,11 @@ public class Board {
     public static final int ROW_COUNT = COLUMN_COUNT;
     public static final int LAST_INDEX = COLUMN_COUNT - 1;
     public static final int SECOND_INDEX = 1;
-    public static final int SCORE_PAWN = 1;
-    public static final float SCORE_PAWN_WHEN_HAVE_OTHER_PAWN_IN_SAME_COLUMN = 0.5f;
+
     public static final int FIRST_ROW_INDEX = 0;
     private static final int SECOND_LAST_INDEX = LAST_INDEX - 1;
 
-    private List<List<Piece>> mPieces = new ArrayList<>();
+    private List<List<Piece>> pieces = new ArrayList<>();
 
     private boolean isInvert = false;
 
@@ -29,11 +28,11 @@ public class Board {
     }
 
     private void initWithBlankPiece() {
-        IntStream.range(0, ROW_COUNT).forEach(i -> mPieces.add(createSpaceRow()));
+        IntStream.range(0, ROW_COUNT).forEach(i -> pieces.add(createSpaceRow()));
     }
 
     public void initialize() {
-        List<Piece> mRow1 = mPieces.get(FIRST_ROW_INDEX);
+        List<Piece> mRow1 = pieces.get(FIRST_ROW_INDEX);
         mRow1.clear();
         mRow1.add(Piece.createWhiteRook());
         mRow1.add(Piece.createWhiteKnight());
@@ -44,7 +43,7 @@ public class Board {
         mRow1.add(Piece.createWhiteKnight());
         mRow1.add(Piece.createWhiteRook());
 
-        List<Piece> mRow8 = mPieces.get(LAST_INDEX);
+        List<Piece> mRow8 = pieces.get(LAST_INDEX);
         mRow8.clear();
         mRow8.add(Piece.createBlackRook());
         mRow8.add(Piece.createBlackKnight());
@@ -55,8 +54,8 @@ public class Board {
         mRow8.add(Piece.createBlackKnight());
         mRow8.add(Piece.createBlackRook());
 
-        List<Piece> mRow2 = mPieces.get(SECOND_INDEX);
-        List<Piece> mRow7 = mPieces.get(SECOND_LAST_INDEX);
+        List<Piece> mRow2 = pieces.get(SECOND_INDEX);
+        List<Piece> mRow7 = pieces.get(SECOND_LAST_INDEX);
         IntStream.range(0, COLUMN_COUNT).forEach(i -> {
             mRow2.set(i, Piece.createWhitePawn());
             mRow7.set(i, Piece.createBlackPawn());
@@ -71,7 +70,7 @@ public class Board {
 
 
     public int getPieceCount(Piece.Color color, Piece.Type type) {
-        return (int) mPieces.stream().flatMap(Collection::stream)
+        return (int) pieces.stream().flatMap(Collection::stream)
                 .filter(piece -> piece.getColor() == color
                         && piece.getType() == type)
                 .count();
@@ -79,7 +78,7 @@ public class Board {
 
 
     public String getRowToPrint(int i) {
-        List<Piece> list = mPieces.get(i - 1);
+        List<Piece> list = pieces.get(i - 1);
 
         StringBuilder builder = new StringBuilder();
         list.forEach(piece -> builder.append(piece.getRepresentation()));
@@ -98,7 +97,7 @@ public class Board {
         Position position = Position.by(pos);
         int row = getRowIndexFrom(position.getRow());
         int column = getColumnIndexFrom(position.getColumn());
-        return mPieces.get(row).get(column);
+        return pieces.get(row).get(column);
     }
 
     private int getColumnIndexFrom(int pos) {
@@ -122,58 +121,29 @@ public class Board {
     }
 
     public int getTotalCount() {
-        return (int) mPieces.stream().flatMap(Collection::stream)
+        return (int) pieces.stream().flatMap(Collection::stream)
                 .filter(piece -> piece.getType() != Piece.Type.NO_PIECE)
                 .count();
     }
 
     public void setPieceAtPosition(String posStr, Piece.Color color, Piece.Type type) {
         Position position = Position.by(posStr);
-        mPieces.get(position.getRow()).set(position.getColumn(), Piece.create(color, type));
-    }
-
-    public float getAllScore(Piece.Color color) {
-        Optional<Float> optionalFloat = mPieces.stream()
-                .flatMap(Collection::stream)
-                .filter(piece -> piece.getColor() == color)
-                .map(this::getPieceScore).reduce((sum, n) -> sum + n);
-        float excludePawn = optionalFloat.isPresent() ? optionalFloat.get() : 0;
-        return excludePawn + computePawnScore(color);
-    }
-
-    private float getPieceScore(Piece piece) {
-        return piece.getType().getScore();
-    }
-
-    float computePawnScore(Piece.Color color) {
-        float score = 0;
-        for (int column = 0; column < COLUMN_COUNT; column++) {
-            score += computeOneColumnPawnScore(color, column);
-        }
-        return score;
-    }
-
-    float computeOneColumnPawnScore(Piece.Color color, int column) {
-        int count = computeOneColumnPawnCount(color, column);
-
-        if (count == 1) {
-            return SCORE_PAWN;
-        }
-        if (count > 1) {
-            return count * SCORE_PAWN_WHEN_HAVE_OTHER_PAWN_IN_SAME_COLUMN;
-        }
-        return 0;
+        pieces.get(position.getRow()).set(position.getColumn(), Piece.create(color, type));
     }
 
     int computeOneColumnPawnCount(Piece.Color color, int column) {
         int count = 0;
-        for (int row = 0; row < ROW_COUNT; row++) {
-            Piece piece = mPieces.get(row).get(column);
+        for (int row = 0; row < Board.ROW_COUNT; row++) {
+            Piece piece = getPieces().get(row).get(column);
             if (piece.getType() == Piece.Type.PAWN
                     && piece.getColor() == color) {
                 count++;
             }
         }
         return count;
+    }
+
+    public List<List<Piece>> getPieces() {
+        return pieces;
     }
 }

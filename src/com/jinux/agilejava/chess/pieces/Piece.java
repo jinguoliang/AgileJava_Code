@@ -10,6 +10,12 @@ public class Piece {
     public static final char KING_REPRESENTATION = 'k';
     public static final char BLANK_REPRESENTATION = '.';
 
+    public static final float SCORE_ROOK = 5;
+    public static final float SCORE_QUEEN = 9;
+    public static final float SCORE_BISHOP = 3;
+    public static final float SCORE_KNIGHT = 2.5f;
+    public static final float SCORE_ZERO = 0;
+
     private Color mColor;
     private Type type;
 
@@ -109,18 +115,28 @@ public class Piece {
     public enum Color {WHITE, BLACK}
 
     public enum Type {
-        ROOK(ROOK_REPRESENTATION),
-        BISHOP(BISHOP_REPRESENTATION),
-        KNIGHT(KNIGHT_REPRESENTATION),
+        ROOK(ROOK_REPRESENTATION, SCORE_ROOK),
+        BISHOP(BISHOP_REPRESENTATION, SCORE_BISHOP),
+        KNIGHT(KNIGHT_REPRESENTATION, SCORE_KNIGHT),
         KING(KING_REPRESENTATION),
-        QUEEN(QUEEN_REPRESENTATION),
+        QUEEN(QUEEN_REPRESENTATION, SCORE_QUEEN),
         PAWN(PAWN_REPRESENTATION),
         NO_PIECE(BLANK_REPRESENTATION);
 
         private final char representation;
 
+        private final float score;
+
+        public float getScore() {
+            return score;
+        }
+
         Type(char representation) {
+            this(representation, SCORE_ZERO);
+        }
+        Type(char representation, float score) {
             this.representation = representation;
+            this.score = score;
         }
     }
 }

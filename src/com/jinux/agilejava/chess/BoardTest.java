@@ -76,24 +76,6 @@ class BoardTest {
         assertEquals(1, board.getTotalCount());
     }
 
-    @Test
-    void testComputeScore() {
-        assertWhiteScore(0);
-        board.setPieceAtPosition("a5", Piece.Color.WHITE, Piece.Type.QUEEN);
-        assertWhiteScore(9);
-        board.setPieceAtPosition("a6", Piece.Color.WHITE, Piece.Type.KNIGHT);
-        assertWhiteScore(7.5f);
-        board.setPieceAtPosition("a7", Piece.Color.WHITE, Piece.Type.BISHOP);
-        assertWhiteScore(10.5f);
-        board.setPieceAtPosition("a8", Piece.Color.WHITE, Piece.Type.ROOK);
-        assertWhiteScore(15.5f);
-        board.setPieceAtPosition("a1", Piece.Color.WHITE, Piece.Type.PAWN);
-        assertWhiteScore(16.5f);
-        board.setPieceAtPosition("a2", Piece.Color.WHITE, Piece.Type.PAWN);
-        assertWhiteScore(16.5f);
-
-    }
-
     private void assertWhiteScore(float expect) {
         assertEquals(expect, board.getAllScore(Piece.Color.WHITE), 0.05f);
     }

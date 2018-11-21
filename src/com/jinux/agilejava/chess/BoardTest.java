@@ -89,5 +89,15 @@ class BoardTest {
         assertEquals(expect, board.computeOneColumnPawnCount(WHITE, 0));
     }
 
+    @Test
+    void testRemovePieceAtPosition() {
+        String a2 = "a2";
+        board.setPieceAtPosition(a2, WHITE, Piece.Type.KING);
+        assertEquals(Piece.Type.KING, board.getPieceAtPosition(a2).getType());
+        board.removePieceAtPosition(a2);
+        assertEquals(Piece.Type.NO_PIECE, board.getPieceAtPosition(a2).getType());
+
+    }
+
 
 }

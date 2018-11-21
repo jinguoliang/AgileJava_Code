@@ -24,4 +24,21 @@ public class Position {
     public int getColumn() {
         return column;
     }
+
+    public void setColumn(int i) {
+        column = i;
+    }
+
+    @Override
+    public String toString() {
+        return columnToString() + rowToString();
+    }
+
+    private String rowToString() {
+        return "" + (row + 1);
+    }
+
+    private char columnToString() {
+        return (char)('a' + column);
+    }
 }

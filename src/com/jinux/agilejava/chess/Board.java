@@ -3,7 +3,9 @@ package com.jinux.agilejava.chess;
 import com.jinux.agilejava.chess.pieces.Piece;
 import com.jinux.agilejava.utils.StringUtil;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -145,5 +147,10 @@ public class Board {
 
     public List<List<Piece>> getPieces() {
         return pieces;
+    }
+
+    public void removePieceAtPosition(String posStr) {
+        Position position = Position.by(posStr);
+        pieces.get(position.getRow()).set(position.getColumn(), Piece.noPiece());
     }
 }

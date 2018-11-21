@@ -115,5 +115,22 @@ class GameTest {
         board.setPieceAtPosition("g2", WHITE, Piece.Type.PAWN);
         board.setPieceAtPosition("g4", WHITE, Piece.Type.QUEEN);
         board.setPieceAtPosition("h3", WHITE, Piece.Type.PAWN);
+
     }
+
+    @Test
+    void testMoveLeft() {
+        Board board = game.getBoard();
+        String pos = "b2";
+        board.setPieceAtPosition(pos, Piece.Color.BLACK, Piece.Type.KING);
+        game.moveLeft(pos);
+        Piece piece = board.getPieceAtPosition("a2");
+        assertEquals(Piece.Type.KING, piece.getType());
+        assertEquals(BLACK, piece.getColor());
+        assertEquals(Piece.Type.NO_PIECE, board.getPieceAtPosition(pos).getType());
+    }
+
+
+
+
 }

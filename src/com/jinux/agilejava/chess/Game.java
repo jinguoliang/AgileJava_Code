@@ -1,14 +1,9 @@
 package com.jinux.agilejava.chess;
 
 import com.jinux.agilejava.chess.pieces.Piece;
-import com.jinux.agilejava.utils.StringUtil;
 
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 /**
  * game logic
@@ -58,5 +53,14 @@ public class Game {
 
     public Board getBoard() {
         return board;
+    }
+
+    public void moveLeft(String pos) {
+        Position position = Position.by(pos);
+        position.setColumn(position.getColumn() - 1);
+
+        Piece piece = board.getPieceAtPosition(pos);
+        board.setPieceAtPosition(position.toString(), piece.getColor(), piece.getType());
+        board.removePieceAtPosition(pos);
     }
 }

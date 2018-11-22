@@ -1,13 +1,18 @@
 package com.jinux.agilejava.chess;
 
-import com.jinux.agilejava.chess.pieces.Piece;
+import com.jinux.agilejava.chess.pieces.*;
 import com.jinux.agilejava.utils.StringUtil;
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+
+import static com.jinux.agilejava.chess.pieces.Piece.Color.BLACK;
+import static com.jinux.agilejava.chess.pieces.Piece.Color.WHITE;
 
 /**
  * a chess board we can play on it
@@ -36,45 +41,45 @@ public class Board {
     public void initialize() {
         List<Piece> mRow1 = pieces.get(FIRST_ROW_INDEX);
         mRow1.clear();
-        mRow1.add(Piece.createWhiteRook());
-        mRow1.add(Piece.createWhiteKnight());
-        mRow1.add(Piece.createWhiteBishop());
-        mRow1.add(Piece.createWhiteQueen());
-        mRow1.add(Piece.createWhiteKing());
-        mRow1.add(Piece.createWhiteBishop());
-        mRow1.add(Piece.createWhiteKnight());
-        mRow1.add(Piece.createWhiteRook());
+        mRow1.add(Rook.create(WHITE));
+        mRow1.add(Knight.create(WHITE));
+        mRow1.add(Bishop.create(WHITE));
+        mRow1.add(Queen.create(WHITE));
+        mRow1.add(King.create(WHITE));
+        mRow1.add(Bishop.create(WHITE));
+        mRow1.add(Knight.create(WHITE));
+        mRow1.add(Rook.create(WHITE));
 
         List<Piece> mRow8 = pieces.get(LAST_INDEX);
         mRow8.clear();
-        mRow8.add(Piece.createBlackRook());
-        mRow8.add(Piece.createBlackKnight());
-        mRow8.add(Piece.createBlackBishop());
-        mRow8.add(Piece.createBlackQueen());
-        mRow8.add(Piece.createBlackKing());
-        mRow8.add(Piece.createBlackBishop());
-        mRow8.add(Piece.createBlackKnight());
-        mRow8.add(Piece.createBlackRook());
+        mRow8.add(Rook.create(BLACK));
+        mRow8.add(Knight.create(BLACK));
+        mRow8.add(Bishop.create(BLACK));
+        mRow8.add(Queen.create(BLACK));
+        mRow8.add(King.create(BLACK));
+        mRow8.add(Bishop.create(BLACK));
+        mRow8.add(Knight.create(BLACK));
+        mRow8.add(Rook.create(BLACK));
 
         List<Piece> mRow2 = pieces.get(SECOND_INDEX);
         List<Piece> mRow7 = pieces.get(SECOND_LAST_INDEX);
         IntStream.range(0, COLUMN_COUNT).forEach(i -> {
-            mRow2.set(i, Piece.createWhitePawn());
-            mRow7.set(i, Piece.createBlackPawn());
+            mRow2.set(i, Pawn.create(WHITE));
+            mRow7.set(i, Pawn.create(BLACK));
         });
     }
 
     private List<Piece> createSpaceRow() {
         return IntStream.range(0, COLUMN_COUNT)
-                .mapToObj(i -> Piece.noPiece())
+                .mapToObj(i -> BlankPiece.create())
                 .collect(Collectors.toList());
     }
 
 
-    public int getPieceCount(Piece.Color color, Piece.Type type) {
+    public int getPieceCount(Piece.Color color, Class<? extends Piece> clazz) {
         return (int) pieces.stream().flatMap(Collection::stream)
-                .filter(piece -> piece.getColor() == color
-                        && piece.getType() == type)
+                .filter(piece -> (piece.getColor() == color)
+                        && piece.getClass().equals(clazz))
                 .count();
     }
 
@@ -124,20 +129,32 @@ public class Board {
 
     public int getTotalCount() {
         return (int) pieces.stream().flatMap(Collection::stream)
-                .filter(piece -> piece.getType() != Piece.Type.NO_PIECE)
+                .filter(piece -> !piece.getClass().equals(BlankPiece.class))
                 .count();
     }
 
-    public void setPieceAtPosition(String posStr, Piece.Color color, Piece.Type type) {
+    public void setPieceAtPosition(String posStr, Piece.Color color, Class<? extends Piece> clazz) {
         Position position = Position.by(posStr);
-        pieces.get(position.getRow()).set(position.getColumn(), Piece.create(color, type));
+        try {
+            Constructor<? extends Piece> declaredConstructor = clazz.getDeclaredConstructor(Piece.Color.class);
+            declaredConstructor.setAccessible(true);
+            pieces.get(position.getRow()).set(position.getColumn(), declaredConstructor.newInstance(color));
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+        } catch (NoSuchMethodException e) {
+            e.printStackTrace();
+        }
     }
 
     int computeOneColumnPawnCount(Piece.Color color, int column) {
         int count = 0;
         for (int row = 0; row < Board.ROW_COUNT; row++) {
             Piece piece = getPieces().get(row).get(column);
-            if (piece.getType() == Piece.Type.PAWN
+            if (piece.getClass().equals(Pawn.class)
                     && piece.getColor() == color) {
                 count++;
             }
@@ -151,6 +168,6 @@ public class Board {
 
     public void removePieceAtPosition(String posStr) {
         Position position = Position.by(posStr);
-        pieces.get(position.getRow()).set(position.getColumn(), Piece.noPiece());
+        pieces.get(position.getRow()).set(position.getColumn(), BlankPiece.create());
     }
 }

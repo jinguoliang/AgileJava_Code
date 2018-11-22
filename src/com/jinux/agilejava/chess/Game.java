@@ -28,7 +28,7 @@ public class Game {
     }
 
     private float getPieceScore(Piece piece) {
-        return piece.getType().getScore();
+        return piece.getScore();
     }
 
     float computePawnScore(Piece.Color color) {
@@ -60,7 +60,7 @@ public class Game {
         position.setColumn(position.getColumn() - 1);
 
         Piece piece = board.getPieceAtPosition(pos);
-        board.setPieceAtPosition(position.toString(), piece.getColor(), piece.getType());
+        board.setPieceAtPosition(position.toString(), piece.getColor(), piece.getClass());
         board.removePieceAtPosition(pos);
     }
 }

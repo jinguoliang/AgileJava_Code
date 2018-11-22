@@ -1,6 +1,6 @@
 package com.jinux.agilejava.chess;
 
-import com.jinux.agilejava.chess.pieces.Piece;
+import com.jinux.agilejava.chess.pieces.*;
 import com.jinux.agilejava.utils.StringUtil;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -45,8 +45,8 @@ class BoardTest {
     void testCount() {
         board.initialize();
 
-        assertEquals(8, board.getPieceCount(Piece.Color.WHITE, Piece.Type.PAWN));
-        assertEquals(8, board.getPieceCount(Piece.Color.BLACK, Piece.Type.PAWN));
+        assertEquals(8, board.getPieceCount(Piece.Color.WHITE, Pawn.class));
+        assertEquals(8, board.getPieceCount(Piece.Color.BLACK, Pawn.class));
     }
 
     @Test
@@ -54,34 +54,34 @@ class BoardTest {
         board.initialize();
 
         Assertions.assertFalse(board.getInvert());
-        assertPieceAtPosition(Piece.Color.BLACK, Piece.Type.ROOK, "a8");
-        assertPieceAtPosition(Piece.Color.WHITE, Piece.Type.KING, "e1");
+        assertPieceAtPosition(Piece.Color.BLACK, Rook.class, "a8");
+        assertPieceAtPosition(Piece.Color.WHITE, King.class, "e1");
 
         board.setInvert(true);
         Assertions.assertTrue(board.getInvert());
-        assertPieceAtPosition(Piece.Color.WHITE, Piece.Type.ROOK, "a8");
-        assertPieceAtPosition(Piece.Color.BLACK, Piece.Type.QUEEN, "e1");
+        assertPieceAtPosition(Piece.Color.WHITE, Rook.class, "a8");
+        assertPieceAtPosition(Piece.Color.BLACK, Queen.class, "e1");
 
     }
 
-    private void assertPieceAtPosition(Piece.Color color, Piece.Type type, String pos) {
+    private void assertPieceAtPosition(Piece.Color color, Class<? extends Piece> type, String pos) {
         Piece p = board.getPieceAtPosition(pos);
         assertEquals(color, p.getColor());
-        assertEquals(type, p.getType());
+        assertEquals(type, p.getClass());
     }
 
     @Test
     void testSetPieceAtPosition() {
-        board.setPieceAtPosition("b6", Piece.Color.BLACK, Piece.Type.KING);
-        assertPieceAtPosition(Piece.Color.BLACK, Piece.Type.KING, "b6");
+        board.setPieceAtPosition("b6", Piece.Color.BLACK, King.class);
+        assertPieceAtPosition(Piece.Color.BLACK, King.class, "b6");
         assertEquals(1, board.getTotalCount());
     }
 
     @Test
     void testComputeOneColumnCount() {
-        board.setPieceAtPosition("a1", WHITE, Piece.Type.PAWN);
+        board.setPieceAtPosition("a1", WHITE, Pawn.class);
         assertOneColumnPawnCount(1);
-        board.setPieceAtPosition("a2", WHITE, Piece.Type.PAWN);
+        board.setPieceAtPosition("a2", WHITE, Pawn.class);
         assertOneColumnPawnCount(2);
     }
 
@@ -92,10 +92,10 @@ class BoardTest {
     @Test
     void testRemovePieceAtPosition() {
         String a2 = "a2";
-        board.setPieceAtPosition(a2, WHITE, Piece.Type.KING);
-        assertEquals(Piece.Type.KING, board.getPieceAtPosition(a2).getType());
+        board.setPieceAtPosition(a2, WHITE, King.class);
+        assertEquals(King.class, board.getPieceAtPosition(a2).getClass());
         board.removePieceAtPosition(a2);
-        assertEquals(Piece.Type.NO_PIECE, board.getPieceAtPosition(a2).getType());
+        assertEquals(BlankPiece.class, board.getPieceAtPosition(a2).getClass());
 
     }
 

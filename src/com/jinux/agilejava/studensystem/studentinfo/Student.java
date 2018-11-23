@@ -18,9 +18,36 @@ public class Student {
     private GradingStrategy mGradingStrategy = new BasicGradingStrategy();
 
     private List<Grade> mGrades = new ArrayList<>();
+    private String lastName;
+    private String firstName = "";
+    private String middleName = "";
 
-    public Student(String name) {
-        this.mName = name;
+    public Student(String fullName) {
+        this.mName = fullName;
+        List<String> nameParts = split(fullName);
+        setName(nameParts);
+    }
+
+    private List<String> split(String fullName) {
+        List<String> result = new ArrayList<>(3);
+        StringBuilder builder = new StringBuilder();
+        int index = 0;
+        while (index < fullName.length()) {
+            char c = fullName.charAt(index);
+            if (c != ' ') {
+                builder.append(c);
+            } else {
+                if (builder.length() > 0) {
+                    result.add(builder.toString());
+                }
+                builder = new StringBuilder();
+            }
+            index++;
+        }
+        if (builder.length() > 0) {
+            result.add(builder.toString());
+        }
+        return result;
     }
 
     public void setGradingStrategy(GradingStrategy mGradingStrategy) {
@@ -29,6 +56,19 @@ public class Student {
 
     public String getName() {
         return mName;
+    }
+
+    private void setName(List<String> nameParts) {
+        if (nameParts.size() == 1) {
+            this.lastName = nameParts.get(0);
+        } else if (nameParts.size() == 2) {
+            this.firstName = nameParts.get(0);
+            this.lastName = nameParts.get(1);
+        } else if (nameParts.size() == 3) {
+            this.firstName = nameParts.get(0);
+            this.middleName = nameParts.get(1);
+            this.lastName = nameParts.get(2);
+        }
     }
 
     public boolean isFullTime() {
@@ -60,6 +100,18 @@ public class Student {
 
     public void addGrade(Grade grade) {
         mGrades.add(grade);
+    }
+
+    public String getFirstName() {
+        return this.firstName;
+    }
+
+    public String getLastName() {
+        return this.lastName;
+    }
+
+    public String getMiddleName() {
+        return this.middleName;
     }
 
     enum Grade {

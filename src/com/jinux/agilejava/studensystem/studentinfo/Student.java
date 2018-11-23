@@ -59,16 +59,23 @@ public class Student {
     }
 
     private void setName(List<String> nameParts) {
-        if (nameParts.size() == 1) {
-            this.lastName = nameParts.get(0);
-        } else if (nameParts.size() == 2) {
-            this.firstName = nameParts.get(0);
-            this.lastName = nameParts.get(1);
-        } else if (nameParts.size() == 3) {
-            this.firstName = nameParts.get(0);
-            this.middleName = nameParts.get(1);
-            this.lastName = nameParts.get(2);
+
+        this.lastName = removeLast(nameParts);
+        String name = removeLast(nameParts);
+        if (nameParts.isEmpty()) {
+            this.firstName = name;
+        } else {
+            this.middleName = name;
+            this.firstName = removeLast(nameParts);
         }
+
+    }
+
+    private String removeLast(List<String> nameParts) {
+        if (nameParts.isEmpty()) {
+            return "";
+        }
+        return nameParts.remove(nameParts.size() - 1);
     }
 
     public boolean isFullTime() {

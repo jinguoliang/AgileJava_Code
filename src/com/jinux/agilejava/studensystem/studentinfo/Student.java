@@ -31,10 +31,10 @@ public class Student {
     private List<String> split(String fullName) {
         List<String> result = new ArrayList<>(3);
         StringBuilder builder = new StringBuilder();
-        int index = 0;
-        while (index < fullName.length()) {
-            char c = fullName.charAt(index);
-            if (c != ' ') {
+
+        for (int i = 0; i < fullName.length(); i++) {
+            char c = fullName.charAt(i);
+            if (!Character.isWhitespace(c)) {
                 builder.append(c);
             } else {
                 if (builder.length() > 0) {
@@ -42,8 +42,8 @@ public class Student {
                 }
                 builder = new StringBuilder();
             }
-            index++;
         }
+
         if (builder.length() > 0) {
             result.add(builder.toString());
         }

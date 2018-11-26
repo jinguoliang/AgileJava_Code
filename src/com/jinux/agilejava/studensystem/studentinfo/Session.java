@@ -1,6 +1,7 @@
 package com.jinux.agilejava.studensystem.studentinfo;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public abstract class Session implements Comparable<CourseSession> {
 
@@ -65,5 +66,13 @@ public abstract class Session implements Comparable<CourseSession> {
         } else {
             return compareDepart;
         }
+    }
+
+    public float averageGpaForPartTimeStudents() {
+        List<Double> collect = mAllStudents.stream()
+                .filter(student -> !student.isFullTime())
+                .map(Student::getGpa).collect(Collectors.toList());
+        Double sum = collect.stream().reduce(0d, (integer, integer2) -> integer + integer2);
+        return sum.floatValue() / collect.size();
     }
 }

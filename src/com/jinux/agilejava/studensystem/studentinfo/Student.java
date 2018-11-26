@@ -98,7 +98,7 @@ public class Student {
         mState = state;
     }
 
-    public double getGpa() {
+    public float getGpa() {
         if (mGrades.isEmpty()) return 0f;
         float total = 0f;
         for (Grade grade : mGrades) total += mGradingStrategy.gradePointsFor(grade);

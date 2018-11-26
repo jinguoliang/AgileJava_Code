@@ -69,10 +69,10 @@ public abstract class Session implements Comparable<CourseSession> {
     }
 
     public float averageGpaForPartTimeStudents() {
-        List<Double> collect = mAllStudents.stream()
+        List<Float> collect = mAllStudents.stream()
                 .filter(student -> !student.isFullTime())
                 .map(Student::getGpa).collect(Collectors.toList());
-        Double sum = collect.stream().reduce(0d, (integer, integer2) -> integer + integer2);
-        return sum.floatValue() / collect.size();
+        Float sum = collect.stream().reduce(0f, (integer, integer2) -> integer + integer2);
+        return sum / collect.size();
     }
 }

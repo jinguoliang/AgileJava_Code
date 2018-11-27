@@ -115,4 +115,13 @@ class StudentTest {
     private void assertGpa(Student student, double expect) {
         assertEquals(expect, student.getGpa(), GRADE_TOLERANCE);
     }
+
+    @Test
+    void testCharge() {
+        Student student = new Student("a");
+        student.addCharge(500);
+        student.addCharge(200);
+        student.addCharge(399);
+        assertEquals(1099, student.totalCharges());
+    }
 }

@@ -1,5 +1,7 @@
 package com.jinux.agilejava.studensystem.studentinfo;
 
+import com.jinux.agilejava.studensystem.report.CourseReport;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -21,6 +23,7 @@ public class Student {
     private String lastName;
     private String firstName = "";
     private String middleName = "";
+    private List<Integer> charges = new ArrayList<>();
 
     public Student(String fullName) {
         this.mName = fullName;
@@ -119,6 +122,14 @@ public class Student {
 
     public String getMiddleName() {
         return this.middleName;
+    }
+
+    public void addCharge(int charge) {
+        charges.add(charge);
+    }
+
+    public int totalCharges() {
+        return charges.stream().reduce(0, (integer, integer2) -> integer + integer2);
     }
 
     enum Grade {

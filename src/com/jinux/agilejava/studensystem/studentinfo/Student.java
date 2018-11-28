@@ -3,6 +3,7 @@ package com.jinux.agilejava.studensystem.studentinfo;
 import com.jinux.agilejava.studensystem.report.CourseReport;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
@@ -33,23 +34,7 @@ public class Student {
 
     private List<String> split(String fullName) {
         List<String> result = new ArrayList<>(3);
-        StringBuilder builder = new StringBuilder();
-
-        for (int i = 0; i < fullName.length(); i++) {
-            char c = fullName.charAt(i);
-            if (!Character.isWhitespace(c)) {
-                builder.append(c);
-            } else {
-                if (builder.length() > 0) {
-                    result.add(builder.toString());
-                }
-                builder = new StringBuilder();
-            }
-        }
-
-        if (builder.length() > 0) {
-            result.add(builder.toString());
-        }
+        result.addAll(Arrays.asList(fullName.split(" ")));
         return result;
     }
 

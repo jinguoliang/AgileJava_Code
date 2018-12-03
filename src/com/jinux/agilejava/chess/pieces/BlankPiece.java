@@ -1,5 +1,9 @@
 package com.jinux.agilejava.chess.pieces;
 
+import com.jinux.agilejava.chess.Board;
+
+import java.util.List;
+
 public class BlankPiece extends Piece {
     private BlankPiece(Color color) {
         super(color);
@@ -13,6 +17,11 @@ public class BlankPiece extends Piece {
     @Override
     public float getScore() {
         return SCORE_ZERO;
+    }
+
+    @Override
+    public List<String> getPossibleMoves(String pos, Board board) {
+        return null;
     }
 
     public static BlankPiece create() {

@@ -9,8 +9,17 @@ public class Position {
         this.column = getIndexFrom(posStr, 0, 'a');
     }
 
+    public Position(int column, int row) {
+        this.row = row;
+        this.column = column;
+    }
+
     public static Position by(String posStr) {
         return new Position(posStr);
+    }
+
+    public Position clone(int dColumn, int dRow) {
+        return new Position(this.column + dColumn, this.row + dRow);
     }
 
     private int getIndexFrom(String posString, int i, char start) {

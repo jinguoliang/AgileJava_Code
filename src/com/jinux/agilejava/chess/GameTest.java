@@ -4,9 +4,13 @@ import com.jinux.agilejava.chess.pieces.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+import java.util.List;
+
 import static com.jinux.agilejava.chess.pieces.Piece.Color.BLACK;
 import static com.jinux.agilejava.chess.pieces.Piece.Color.WHITE;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class GameTest {
 
@@ -106,17 +110,20 @@ class GameTest {
     }
 
     @Test
-    void testMoveLeft() {
+    void testKingMovedNotOnEdge() {
         Board board = game.getBoard();
         String pos = "b2";
-        board.setPieceAtPosition(pos, Piece.Color.BLACK, King.class);
-        game.moveLeft(pos);
-        Piece piece = board.getPieceAtPosition("a2");
-        assertEquals(King.class, piece.getClass());
-        assertEquals(BLACK, piece.getColor());
-        assertEquals(BlankPiece.class, board.getPieceAtPosition(pos).getClass());
+        Piece piece = King.create(WHITE);
+        board.setPieceAtPosition(pos, piece);
+        assertContains(piece.getPossibleMoves(pos, board),
+                "c2", "a2", "b3", "b1");
     }
 
+    private void assertContains(List<String> possibleMoves, String... positions) {
+        assertTrue(
+            Arrays.stream(positions).allMatch(possibleMoves::contains)
+        );
+    }
 
 
 

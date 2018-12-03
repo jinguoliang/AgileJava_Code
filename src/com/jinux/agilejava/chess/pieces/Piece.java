@@ -1,5 +1,9 @@
 package com.jinux.agilejava.chess.pieces;
 
+import com.jinux.agilejava.chess.Board;
+
+import java.util.List;
+
 public abstract class Piece {
 
     public static final char PAWN_REPRESENTATION = 'p';
@@ -46,6 +50,7 @@ public abstract class Piece {
 
     public abstract float getScore();
 
+    public abstract List<String> getPossibleMoves(String pos, Board board);
 
     public enum Color {WHITE, BLACK}
 }

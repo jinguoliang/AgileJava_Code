@@ -1,5 +1,9 @@
 package com.jinux.agilejava.chess.pieces;
 
+import com.jinux.agilejava.chess.Board;
+
+import java.util.List;
+
 public class Pawn extends Piece {
     Pawn(Color color) {
         super(color);
@@ -17,5 +21,10 @@ public class Pawn extends Piece {
     @Override
     public float getScore() {
         return SCORE_ZERO;
+    }
+
+    @Override
+    public List<String> getPossibleMoves(String pos, Board board) {
+        return null;
     }
 }

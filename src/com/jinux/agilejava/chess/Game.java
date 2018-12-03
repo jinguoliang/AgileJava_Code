@@ -54,13 +54,4 @@ public class Game {
     public Board getBoard() {
         return board;
     }
-
-    public void moveLeft(String pos) {
-        Position position = Position.by(pos);
-        position.setColumn(position.getColumn() - 1);
-
-        Piece piece = board.getPieceAtPosition(pos);
-        board.setPieceAtPosition(position.toString(), piece.getColor(), piece.getClass());
-        board.removePieceAtPosition(pos);
-    }
 }

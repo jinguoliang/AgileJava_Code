@@ -1,5 +1,9 @@
 package com.jinux.agilejava.chess.pieces;
 
+import com.jinux.agilejava.chess.Board;
+
+import java.util.List;
+
 public class Rook extends Piece {
     private Rook(Color color) {
         super(color);
@@ -17,5 +21,10 @@ public class Rook extends Piece {
     @Override
     public float getScore() {
         return SCORE_ROOK;
+    }
+
+    @Override
+    public List<String> getPossibleMoves(String pos, Board board) {
+        return null;
     }
 }

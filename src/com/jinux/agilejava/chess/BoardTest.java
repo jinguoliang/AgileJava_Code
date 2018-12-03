@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import static com.jinux.agilejava.chess.pieces.Piece.Color.BLACK;
 import static com.jinux.agilejava.chess.pieces.Piece.Color.WHITE;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -72,16 +73,16 @@ class BoardTest {
 
     @Test
     void testSetPieceAtPosition() {
-        board.setPieceAtPosition("b6", Piece.Color.BLACK, King.class);
+        board.setPieceAtPosition("b6", King.create(BLACK));
         assertPieceAtPosition(Piece.Color.BLACK, King.class, "b6");
         assertEquals(1, board.getTotalCount());
     }
 
     @Test
     void testComputeOneColumnCount() {
-        board.setPieceAtPosition("a1", WHITE, Pawn.class);
+        board.setPieceAtPosition("a1", Pawn.create(WHITE));
         assertOneColumnPawnCount(1);
-        board.setPieceAtPosition("a2", WHITE, Pawn.class);
+        board.setPieceAtPosition("a2", Pawn.create(WHITE));
         assertOneColumnPawnCount(2);
     }
 
@@ -92,7 +93,7 @@ class BoardTest {
     @Test
     void testRemovePieceAtPosition() {
         String a2 = "a2";
-        board.setPieceAtPosition(a2, WHITE, King.class);
+        board.setPieceAtPosition(a2, King.create(WHITE));
         assertEquals(King.class, board.getPieceAtPosition(a2).getClass());
         board.removePieceAtPosition(a2);
         assertEquals(BlankPiece.class, board.getPieceAtPosition(a2).getClass());

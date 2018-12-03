@@ -133,21 +133,9 @@ public class Board {
                 .count();
     }
 
-    public void setPieceAtPosition(String posStr, Piece.Color color, Class<? extends Piece> clazz) {
+    public void setPieceAtPosition(String posStr, Piece piece) {
         Position position = Position.by(posStr);
-        try {
-            Constructor<? extends Piece> declaredConstructor = clazz.getDeclaredConstructor(Piece.Color.class);
-            declaredConstructor.setAccessible(true);
-            pieces.get(position.getRow()).set(position.getColumn(), declaredConstructor.newInstance(color));
-        } catch (InstantiationException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (InvocationTargetException e) {
-            e.printStackTrace();
-        } catch (NoSuchMethodException e) {
-            e.printStackTrace();
-        }
+        pieces.get(position.getRow()).set(position.getColumn(), piece);
     }
 
     int computeOneColumnPawnCount(Piece.Color color, int column) {

@@ -33,14 +33,22 @@ class GameTest {
     @Test
     void testComputeOneColumnWhitePawnScore() {
         Board board = game.getBoard();
-        board.setPieceAtPosition("a1", WHITE, Pawn.class);
+        board.setPieceAtPosition("a1", createWhitePawn());
         assertOneColumnWhitePawnScore(1);
-        board.setPieceAtPosition("a2", WHITE, Pawn.class);
+        board.setPieceAtPosition("a2", createWhitePawn());
         assertOneColumnWhitePawnScore(1);
-        board.setPieceAtPosition("a3", WHITE, Pawn.class);
+        board.setPieceAtPosition("a3", createWhitePawn());
         assertOneColumnWhitePawnScore(1.5f);
-        board.setPieceAtPosition("b3", WHITE, Pawn.class);
+        board.setPieceAtPosition("b3", createWhitePawn());
         assertOneColumnWhitePawnScore(1.5f);
+    }
+
+    private Piece createWhitePawn() {
+        return Pawn.create(WHITE);
+    }
+
+    private Piece createBlackPawn() {
+        return Pawn.create(BLACK);
     }
 
     private void assertOneColumnWhitePawnScore(float i) {
@@ -50,13 +58,13 @@ class GameTest {
     @Test
     void testComputeAllColumnPawnScore() {
         Board board = game.getBoard();
-        board.setPieceAtPosition("a1", WHITE, Pawn.class);
+        board.setPieceAtPosition("a1", createWhitePawn());
         assertAllWhitePawnScore(1);
-        board.setPieceAtPosition("a2", WHITE, Pawn.class);
+        board.setPieceAtPosition("a2", createWhitePawn());
         assertAllWhitePawnScore(1);
-        board.setPieceAtPosition("a3", WHITE, Pawn.class);
+        board.setPieceAtPosition("a3", createWhitePawn());
         assertAllWhitePawnScore(1.5f);
-        board.setPieceAtPosition("b3", WHITE, Pawn.class);
+        board.setPieceAtPosition("b3", createWhitePawn());
         assertAllWhitePawnScore(2.5f);
     }
 
@@ -67,32 +75,32 @@ class GameTest {
     @Test
     void testComputeAllScore() {
         Board board = game.getBoard();
-        board.setPieceAtPosition("a7", Piece.Color.BLACK, Pawn.class);
+        board.setPieceAtPosition("a7", createBlackPawn());
         assertBlackScore(1);
-        board.setPieceAtPosition("b6", Piece.Color.BLACK, Pawn.class);
+        board.setPieceAtPosition("b6", createBlackPawn());
         assertBlackScore(2);
-        board.setPieceAtPosition("b8", Piece.Color.BLACK, King.class);
+        board.setPieceAtPosition("b8", King.create(BLACK));
         assertBlackScore(2);
-        board.setPieceAtPosition("c7", Piece.Color.BLACK, Pawn.class);
+        board.setPieceAtPosition("c7", createBlackPawn());
         assertBlackScore(3);
-        board.setPieceAtPosition("c8", Piece.Color.BLACK, Rook.class);
+        board.setPieceAtPosition("c8", Rook.create(BLACK));
         assertBlackScore(8);
-        board.setPieceAtPosition("d7", Piece.Color.BLACK, Bishop.class);
+        board.setPieceAtPosition("d7", Bishop.create(BLACK));
         assertBlackScore(11);
-        board.setPieceAtPosition("e6", Piece.Color.BLACK, Queen.class);
+        board.setPieceAtPosition("e6", Queen.create(BLACK));
         assertBlackScore(20);
 
-        board.setPieceAtPosition("e1", WHITE, Rook.class);
+        board.setPieceAtPosition("e1", Rook.create(WHITE));
         assertBlackScore(20);
         assertWhiteScore(5);
-        board.setPieceAtPosition("f1", WHITE, King.class);
+        board.setPieceAtPosition("f1", King.create(WHITE));
         assertWhiteScore(5);
-        board.setPieceAtPosition("f2", WHITE, Pawn.class);
-        board.setPieceAtPosition("f3", WHITE, Pawn.class);
-        board.setPieceAtPosition("f4", WHITE, Knight.class);
-        board.setPieceAtPosition("g2", WHITE, Pawn.class);
-        board.setPieceAtPosition("g4", WHITE, Queen.class);
-        board.setPieceAtPosition("h3", WHITE, Pawn.class);
+        board.setPieceAtPosition("f2", createWhitePawn());
+        board.setPieceAtPosition("f3", createWhitePawn());
+        board.setPieceAtPosition("f4", Knight.create(WHITE));
+        board.setPieceAtPosition("g2", createWhitePawn());
+        board.setPieceAtPosition("g4", Queen.create(WHITE));
+        board.setPieceAtPosition("h3", createWhitePawn());
 
         assertWhiteScore(19.5f);
     }

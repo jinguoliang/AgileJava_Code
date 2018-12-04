@@ -110,32 +110,49 @@ class GameTest {
 
     @Test
     void testKingMovedNotOnEdge() {
-        assertAKingAtPosistionCanMoved("b2", "c2", "a2", "b3", "b1");
+        assertAKingAtPositionCanMoved("b2", "c2", "a2", "b3", "b1");
     }
 
     @Test
     void testKingMovedOnLeftEdge() {
-        assertAKingAtPosistionCanMoved("a2", "b2", "a3", "a1");
+        assertAKingAtPositionCanMoved("a2", "b2", "a3", "a1");
     }
 
     @Test
     void testKingMovedOnBottomEdge() {
-        assertAKingAtPosistionCanMoved("b1", "c1", "a1", "b2");
+        assertAKingAtPositionCanMoved("b1", "c1", "a1", "b2");
     }
 
     @Test
     void testKingMovedOnLeftBottomCorner() {
-        assertAKingAtPosistionCanMoved("a1", "b1", "a2");
+        assertAKingAtPositionCanMoved("a1", "b1", "a2");
     }
 
     @Test
     void testKingMovedOnRightTopCorner() {
-        assertAKingAtPosistionCanMoved("h8", "g8", "h7");
+        assertAKingAtPositionCanMoved("h8", "g8", "h7");
     }
 
-    private void assertAKingAtPosistionCanMoved(String pos, String... positions) {
-        Board board = game.getBoard();
+    @Test
+    void testQueenMovedNotOnEdge() {
+        // other case is not needed
+        assertAQueenAtPositionCanMoved("b2",
+                "b1", "b3", "b4", "b5", "b6", "b7", "b8",
+                "a2", "c2", "d2", "e2", "f2", "g2", "h2");
+    }
+
+    private void assertAQueenAtPositionCanMoved(String pos, String... positions) {
+        Piece piece = Queen.create(WHITE);
+        assertAPieceAtPositionCanMoved(piece, pos, positions);
+    }
+
+    private void assertAKingAtPositionCanMoved(String pos, String... positions) {
         Piece piece = King.create(WHITE);
+        assertAPieceAtPositionCanMoved(piece, pos, positions);
+    }
+
+    private void assertAPieceAtPositionCanMoved(Piece piece, String pos, String... positions) {
+        Board board = game.getBoard();
         board.setPieceAtPosition(pos, piece);
         assertContains(piece.getPossibleMoves(pos, board), positions);
     }

@@ -4,13 +4,12 @@ import com.jinux.agilejava.chess.pieces.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.Arrays;
 import java.util.List;
 
 import static com.jinux.agilejava.chess.pieces.Piece.Color.BLACK;
 import static com.jinux.agilejava.chess.pieces.Piece.Color.WHITE;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class GameTest {
 
@@ -111,20 +110,39 @@ class GameTest {
 
     @Test
     void testKingMovedNotOnEdge() {
+        assertAKingAtPosistionCanMoved("b2", "c2", "a2", "b3", "b1");
+    }
+
+    @Test
+    void testKingMovedOnLeftEdge() {
+        assertAKingAtPosistionCanMoved("a2", "b2", "a3", "a1");
+    }
+
+    @Test
+    void testKingMovedOnBottomEdge() {
+        assertAKingAtPosistionCanMoved("b1", "c1", "a1", "b2");
+    }
+
+    @Test
+    void testKingMovedOnLeftBottomCorner() {
+        assertAKingAtPosistionCanMoved("a1", "b1", "a2");
+    }
+
+    @Test
+    void testKingMovedOnRightTopCorner() {
+        assertAKingAtPosistionCanMoved("h8", "g8", "h7");
+    }
+
+    private void assertAKingAtPosistionCanMoved(String pos, String... positions) {
         Board board = game.getBoard();
-        String pos = "b2";
         Piece piece = King.create(WHITE);
         board.setPieceAtPosition(pos, piece);
-        assertContains(piece.getPossibleMoves(pos, board),
-                "c2", "a2", "b3", "b1");
+        assertContains(piece.getPossibleMoves(pos, board), positions);
     }
 
     private void assertContains(List<String> possibleMoves, String... positions) {
-        assertTrue(
-            Arrays.stream(positions).allMatch(possibleMoves::contains)
-        );
+        assertArrayEquals(positions, possibleMoves.toArray());
     }
-
 
 
 }

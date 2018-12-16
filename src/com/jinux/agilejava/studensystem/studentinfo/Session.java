@@ -1,5 +1,7 @@
 package com.jinux.agilejava.studensystem.studentinfo;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.*;
 
 public abstract class Session implements Comparable<CourseSession> {
@@ -11,6 +13,7 @@ public abstract class Session implements Comparable<CourseSession> {
     private int mNumber;
     private List<Student> mAllStudents = new ArrayList<>();
     private int mNumberOfCredits;
+    private URL url;
 
     protected Session(String department, int number, Date startDate) {
         mDepartment = department;
@@ -78,5 +81,13 @@ public abstract class Session implements Comparable<CourseSession> {
         } else {
             return 0;
         }
+    }
+
+    public URL getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) throws MalformedURLException {
+        this.url = new URL(url);
     }
 }

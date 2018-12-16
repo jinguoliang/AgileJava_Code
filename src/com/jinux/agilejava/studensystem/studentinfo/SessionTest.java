@@ -4,6 +4,7 @@ import com.jinux.agilejava.utils.DateUtil;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.net.MalformedURLException;
 import java.util.Date;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -97,5 +98,22 @@ public abstract class SessionTest {
         Student student = new Student("a");
         student.addCredits(Student.CREDITS_REQUIRED_FOR_FULL_TIME);
         return student;
+    }
+
+    @Test
+    void testSessionUrl() throws MalformedURLException {
+        final String url = "http://course.langrsoft.com/cmsc300";
+        session.setUrl(url);
+        assertEquals(url, session.getUrl().toString());
+    }
+
+    @Test
+    void testInvalidSessionUrl() {
+        final String url = "httsp://course.langrsoft.com/cmsc300";
+        try {
+            session.setUrl(url);
+            fail("excepted exception due to invalid protocol in URL");
+        } catch (MalformedURLException e) {
+        }
     }
 }

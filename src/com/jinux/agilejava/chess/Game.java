@@ -19,8 +19,7 @@ public class Game {
     }
 
     public float getAllScore(Piece.Color color) {
-        Optional<Float> optionalFloat = board.getPieces().stream()
-                .flatMap(Collection::stream)
+        Optional<Float> optionalFloat = board.getPieceStream()
                 .filter(piece -> piece.getColor() == color)
                 .map(this::getPieceScore).reduce((sum, n) -> sum + n);
         float excludePawn = optionalFloat.isPresent() ? optionalFloat.get() : 0;

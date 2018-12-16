@@ -5,11 +5,11 @@ import com.jinux.agilejava.utils.StringUtil;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
+import java.util.*;
+import java.util.function.Consumer;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 import static com.jinux.agilejava.chess.pieces.Piece.Color.BLACK;
 import static com.jinux.agilejava.chess.pieces.Piece.Color.WHITE;
@@ -17,7 +17,7 @@ import static com.jinux.agilejava.chess.pieces.Piece.Color.WHITE;
 /**
  * a chess board we can play on it
  */
-public class Board {
+public class Board implements Iterable<Piece> {
     public static final int COLUMN_COUNT = 8;
     public static final int ROW_COUNT = COLUMN_COUNT;
     public static final int LAST_INDEX = COLUMN_COUNT - 1;
@@ -77,7 +77,7 @@ public class Board {
 
 
     public int getPieceCount(Piece.Color color, Class<? extends Piece> clazz) {
-        return (int) pieces.stream().flatMap(Collection::stream)
+        return (int) getPieceStream()
                 .filter(piece -> (piece.getColor() == color)
                         && piece.getClass().equals(clazz))
                 .count();
@@ -104,6 +104,10 @@ public class Board {
         Position position = Position.by(pos);
         int row = getRowIndexFrom(position.getRow());
         int column = getColumnIndexFrom(position.getColumn());
+        return getPieceAt(row, column);
+    }
+
+    private Piece getPieceAt(int row, int column) {
         return pieces.get(row).get(column);
     }
 
@@ -128,20 +132,24 @@ public class Board {
     }
 
     public int getTotalCount() {
-        return (int) pieces.stream().flatMap(Collection::stream)
+        return (int) getPieceStream()
                 .filter(piece -> !piece.getClass().equals(BlankPiece.class))
                 .count();
     }
 
     public void setPieceAtPosition(String posStr, Piece piece) {
         Position position = Position.by(posStr);
-        pieces.get(position.getRow()).set(position.getColumn(), piece);
+        setPieceAt(position.getRow(), position.getColumn(), piece);
+    }
+
+    private void setPieceAt(int row, int column, Piece piece) {
+        pieces.get(row).set(column, piece);
     }
 
     int computeOneColumnPawnCount(Piece.Color color, int column) {
         int count = 0;
         for (int row = 0; row < Board.ROW_COUNT; row++) {
-            Piece piece = getPieces().get(row).get(column);
+            Piece piece = getPieceAt(row, column);
             if (piece.getClass().equals(Pawn.class)
                     && piece.getColor() == color) {
                 count++;
@@ -150,12 +158,27 @@ public class Board {
         return count;
     }
 
-    public List<List<Piece>> getPieces() {
-        return pieces;
-    }
-
     public void removePieceAtPosition(String posStr) {
         Position position = Position.by(posStr);
-        pieces.get(position.getRow()).set(position.getColumn(), BlankPiece.create());
+        setPieceAt(position.getRow(), position.getColumn(), BlankPiece.create());
+    }
+
+    @Override
+    public Iterator<Piece> iterator() {
+        return getPieceStream().iterator();
+    }
+
+    public Stream<Piece> getPieceStream() {
+        return pieces.stream().flatMap(Collection::stream);
+    }
+
+    @Override
+    public void forEach(Consumer<? super Piece> action) {
+        getPieceStream().forEach(action);
+    }
+
+    @Override
+    public Spliterator<Piece> spliterator() {
+        return getPieceStream().spliterator();
     }
 }

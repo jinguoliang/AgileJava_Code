@@ -20,6 +20,12 @@ class ScorerTest {
     }
 
     @Test
+    void testIsValid() {
+        assertTrue(scorer.isValid("75"));
+        assertFalse(scorer.isValid("abc"));
+    }
+
+    @Test
     void testBadScoreEntered() {
         try {
             scorer.score("abc");

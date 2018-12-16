@@ -124,4 +124,14 @@ class StudentTest {
         student.addCharge(399);
         assertEquals(1099, student.totalCharges());
     }
+
+    @Test
+    void testBadlyFormattedName() {
+        try {
+            new Student("a b c d");
+            fail("expected exception from 4-part name");
+        } catch (StudentNameFormatException success) {
+
+        }
+    }
 }

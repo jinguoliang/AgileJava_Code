@@ -31,7 +31,10 @@ public class Student {
         List<String> nameParts = split(fullName);
         final int maximumNumberOfNameParts = 3;
         if (nameParts.size() > maximumNumberOfNameParts) {
-            throw new StudentNameFormatException();
+            throw new StudentNameFormatException("" +
+                    "Student name '" + fullName +
+                    "' contains more than " +
+                    maximumNumberOfNameParts + " parts");
         }
         setName(nameParts);
     }

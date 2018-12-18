@@ -87,7 +87,11 @@ public abstract class Session implements Comparable<CourseSession> {
         return url;
     }
 
-    public void setUrl(String url) throws MalformedURLException {
-        this.url = new URL(url);
+    public void setUrl(String url) throws SessionException {
+        try {
+            this.url = new URL(url);
+        } catch (MalformedURLException e) {
+            throw new SessionException(e);
+        }
     }
 }

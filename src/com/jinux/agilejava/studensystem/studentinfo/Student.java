@@ -1,7 +1,5 @@
 package com.jinux.agilejava.studensystem.studentinfo;
 
-import com.jinux.agilejava.studensystem.report.CourseReport;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -11,15 +9,12 @@ public class Student {
 
     public static final int CREDITS_REQUIRED_FOR_FULL_TIME = 12;
     public static final String IN_STATE = "CO";
-
+    public static final String TOO_MANY_NAME_PARTS_MSG = "Student name '%s' contains more than %d parts";
+    public static final int MAXIMUM_NUMBER_OF_NAME_PARTS = 3;
     private final String mName;
-
     private int mCredits;
-
     private String mState;
-
     private GradingStrategy mGradingStrategy = new BasicGradingStrategy();
-
     private List<Grade> mGrades = new ArrayList<>();
     private String lastName;
     private String firstName = "";
@@ -29,12 +24,9 @@ public class Student {
     public Student(String fullName) {
         this.mName = fullName;
         List<String> nameParts = split(fullName);
-        final int maximumNumberOfNameParts = 3;
-        if (nameParts.size() > maximumNumberOfNameParts) {
-            throw new StudentNameFormatException("" +
-                    "Student name '" + fullName +
-                    "' contains more than " +
-                    maximumNumberOfNameParts + " parts");
+        if (nameParts.size() > MAXIMUM_NUMBER_OF_NAME_PARTS) {
+            throw new StudentNameFormatException(String.format(TOO_MANY_NAME_PARTS_MSG,
+                    fullName, MAXIMUM_NUMBER_OF_NAME_PARTS));
         }
         setName(nameParts);
     }

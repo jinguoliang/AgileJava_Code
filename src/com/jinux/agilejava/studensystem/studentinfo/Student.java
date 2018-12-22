@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
+import java.util.logging.Logger;
 
 public class Student {
 
@@ -11,6 +12,7 @@ public class Student {
     public static final String IN_STATE = "CO";
     public static final String TOO_MANY_NAME_PARTS_MSG = "Student name '%s' contains more than %d parts";
     public static final int MAXIMUM_NUMBER_OF_NAME_PARTS = 3;
+    static Logger logger = Logger.getLogger(Student.class.getName());
     private final String mName;
     private int mCredits;
     private String mState;
@@ -25,8 +27,11 @@ public class Student {
         this.mName = fullName;
         List<String> nameParts = split(fullName);
         if (nameParts.size() > MAXIMUM_NUMBER_OF_NAME_PARTS) {
-            throw new StudentNameFormatException(String.format(TOO_MANY_NAME_PARTS_MSG,
-                    fullName, MAXIMUM_NUMBER_OF_NAME_PARTS));
+
+            String message = String.format(TOO_MANY_NAME_PARTS_MSG,
+                    fullName, MAXIMUM_NUMBER_OF_NAME_PARTS);
+            Student.logger.info(message);
+            throw new StudentNameFormatException(message);
         }
         setName(nameParts);
     }
@@ -46,7 +51,6 @@ public class Student {
     }
 
     private void setName(List<String> nameParts) {
-
         this.lastName = removeLast(nameParts);
         String name = removeLast(nameParts);
         if (nameParts.isEmpty()) {

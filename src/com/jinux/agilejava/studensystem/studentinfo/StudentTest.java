@@ -3,6 +3,8 @@ package com.jinux.agilejava.studensystem.studentinfo;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.logging.Logger;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class StudentTest {
@@ -127,14 +129,23 @@ class StudentTest {
 
     @Test
     void testBadlyFormattedName() {
+        TestHandler handler = new TestHandler();
+        Student.logger.addHandler(handler);
+
         final String studentName = "a b c d";
         try {
             new Student(studentName);
             fail("expected exception from 4-part name");
         } catch (StudentNameFormatException success) {
-            assertEquals(String.format(Student.TOO_MANY_NAME_PARTS_MSG,
-                    studentName, Student.MAXIMUM_NUMBER_OF_NAME_PARTS),
+            String message = String.format(Student.TOO_MANY_NAME_PARTS_MSG,
+                    studentName, Student.MAXIMUM_NUMBER_OF_NAME_PARTS);
+            assertEquals(message,
                     success.getMessage());
+            assertTrue(wasLogged(message, handler));
         }
+    }
+
+    private boolean wasLogged(String message, TestHandler handler) {
+        return message.equals(handler.getMessage());
     }
 }

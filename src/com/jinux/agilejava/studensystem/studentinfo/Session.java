@@ -15,9 +15,9 @@ public abstract class Session implements Comparable<CourseSession> {
     private int mNumberOfCredits;
     private URL url;
 
-    protected Session(String department, int number, Date startDate) {
-        mDepartment = department;
-        mNumber = number;
+    protected Session(Course course, Date startDate) {
+        mDepartment = course.getDepartment();
+        mNumber = course.getNumber();
         mStartDate = startDate;
     }
 

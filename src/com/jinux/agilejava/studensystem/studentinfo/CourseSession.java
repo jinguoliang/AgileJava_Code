@@ -3,8 +3,8 @@ package com.jinux.agilejava.studensystem.studentinfo;
 import java.util.*;
 
 public class CourseSession extends Session {
-    protected CourseSession(String department, int number, Date startDate) {
-        super(department, number, startDate);
+    protected CourseSession(Course course, Date startDate) {
+        super(course, startDate);
     }
 
     @Override
@@ -13,6 +13,6 @@ public class CourseSession extends Session {
     }
 
     public static CourseSession create(String department, int number, Date startDate) {
-        return new CourseSession(department, number, startDate);
+        return new CourseSession(new Course(department, number), startDate);
     }
 }

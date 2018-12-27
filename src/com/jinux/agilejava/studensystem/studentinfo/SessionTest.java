@@ -19,11 +19,11 @@ public abstract class SessionTest {
     @BeforeEach
     public void setUp() {
         startDate = DateUtil.createDate(2003, 1, 6);
-        session = createSession("ENGL", 101, startDate);
+        session = createSession(new Course("ENGL", 101), startDate);
         session.setNumberOfCredits(SessionTest.CREDITS);
     }
 
-    protected abstract Session createSession(String department, int number, Date startDate);
+    protected abstract Session createSession(Course course, Date startDate);
 
     @Test
     void testCreate() {
@@ -50,7 +50,7 @@ public abstract class SessionTest {
 
     @Test
     void testCourseDate() {
-        CourseSession session = CourseSession.create("ABCD", 200, startDate);
+        CourseSession session = CourseSession.create(new Course("ABCD", 200), startDate);
         Date sixteenWeeksOut = DateUtil.createDate(2003, 4, 25);
         assertEquals(sixteenWeeksOut, session.getEndDate());
     }
@@ -58,16 +58,16 @@ public abstract class SessionTest {
     @Test
     void testComparable() {
         final Date date = new Date();
-        CourseSession sessionA = CourseSession.create("CMSC", 101, date);
-        CourseSession sessionB = CourseSession.create("ENGL", 101, date);
+        CourseSession sessionA = CourseSession.create(new Course("CMSC", 101), date);
+        CourseSession sessionB = CourseSession.create(new Course("ENGL", 101), date);
 
         assertTrue(sessionA.compareTo(sessionB) < 0);
         assertTrue(sessionB.compareTo(sessionA) > 0);
 
-        CourseSession sessionC = CourseSession.create("ENGL", 101, date);
+        CourseSession sessionC = CourseSession.create(new Course("ENGL", 101), date);
         assertEquals(0, sessionC.compareTo(sessionB));
 
-        CourseSession sessionD = CourseSession.create("ENGL", 210, date);
+        CourseSession sessionD = CourseSession.create(new Course("ENGL", 210), date);
         assertTrue(sessionC.compareTo(sessionD) < 0);
     }
 

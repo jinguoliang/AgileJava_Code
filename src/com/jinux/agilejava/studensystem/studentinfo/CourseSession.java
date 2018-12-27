@@ -12,7 +12,7 @@ public class CourseSession extends Session {
         return 16;
     }
 
-    public static CourseSession create(String department, int number, Date startDate) {
-        return new CourseSession(new Course(department, number), startDate);
+    public static CourseSession create(Course course, Date startDate) {
+        return new CourseSession(course, startDate);
     }
 }

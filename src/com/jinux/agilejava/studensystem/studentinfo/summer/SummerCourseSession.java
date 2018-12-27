@@ -11,8 +11,8 @@ public class SummerCourseSession extends Session {
         super(course, startDate);
     }
 
-    public static SummerCourseSession create(String department, int number, Date startDate) {
-        return new SummerCourseSession(new Course(department, number), startDate);
+    public static SummerCourseSession create(Course course, Date startDate) {
+        return new SummerCourseSession(course, startDate);
     }
 
     @Override
